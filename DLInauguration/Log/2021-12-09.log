@@ -1,0 +1,14 @@
+2021/12/09 14:11:34::Unexpected JSON token when reading DataTable. Expected StartArray, got StartObject. Path 'Vaccine', line 1, position 689.
+
+2021/12/09 14:16:53::Column 'IsVaccination' does not belong to table Vaccine.
+
+2021/12/09 14:19:50::Column 'IsVaccination' does not belong to table Vaccine.
+
+2021/12/09 14:22:57::Column 'IsVaccination' does not belong to table Vaccine.
+
+2021/12/09 14:23:52::Column 'IsVaccination' does not belong to table Vaccine.
+
+2021/12/09 14:24:43::Column 'IsVaccination' does not belong to table Vaccine.
+
+2021/12/09 14:30:20::Column 'Remark' does not belong to table Vaccine.
+

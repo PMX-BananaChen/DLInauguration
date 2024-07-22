@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="DLInauguration_DG" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\\.net\ project\ 入职最新\\DLInauguration_DG\\DLInauguration\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\\.net\ project\ 入职最新\\DLInauguration_DG\\DLInauguration\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="InaugurationDb-Web.config Connection String" description="" value="Data Source=10.40.50.107;Initial Catalog=DL_Inauguration_DG_DEV;User ID=monica;Password=monica@3312" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\\.net\ project\ 入职最新\\DLInauguration_DG\\DLInauguration\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='InaugurationDb']/@connectionString" />
+  </parameter>
+</parameters>

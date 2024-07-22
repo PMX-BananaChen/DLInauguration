@@ -1,0 +1,14 @@
+E:\Projects\DLInauguration\Model\bin\Debug\Model.dll
+E:\Projects\DLInauguration\Model\bin\Debug\Model.pdb
+E:\Projects\DLInauguration\Model\obj\Debug\Model.dll
+E:\Projects\DLInauguration\Model\obj\Debug\Model.pdb
+E:\Projects\DLInauguration\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\DLInauguration_DG\Model\bin\Debug\Model.dll
+D:\DLInauguration_DG\Model\bin\Debug\Model.pdb
+D:\DLInauguration_DG\Model\obj\Debug\Model.dll
+D:\DLInauguration_DG\Model\obj\Debug\Model.pdb
+D:\DLInauguration_DG\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+F:\DLInauguration_DG\Model\bin\Debug\Model.dll
+F:\DLInauguration_DG\Model\bin\Debug\Model.pdb
+F:\DLInauguration_DG\Model\obj\Debug\Model.dll
+F:\DLInauguration_DG\Model\obj\Debug\Model.pdb

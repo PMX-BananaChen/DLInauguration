@@ -1,0 +1,50 @@
+2021/06/07 08:23:57::Unexpected JSON token when reading DataTable. Expected StartArray, got StartObject. Path 'Vaccine', line 1, position 667.
+
+2021/06/07 08:39:19::Unexpected JSON token when reading DataTable. Expected StartArray, got StartObject. Path 'Vaccine', line 1, position 667.
+
+2021/06/07 08:43:06::未将对象引用设置到对象的实例。
+
+2021/06/07 08:51:23::列“identity_no”不属于表 Vaccine。
+
+2021/06/07 08:59:58::列“identity_no”不属于表 Vaccine。
+
+2021/06/07 09:18:09::列“IsVaccination”不属于表 Vaccine。
+
+2021/06/07 09:18:54::列“IsVaccination”不属于表 Vaccine。
+
+2021/06/07 09:21:11::列“IsVaccination”不属于表 Vaccine。
+
+2021/06/07 09:23:10::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:24:51::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:32:13::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:35:08::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:47:39::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:50:18::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 09:52:13::该字符串未被识别为有效的 DateTime。不能在 Vaccination3Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 15:36:38::无法将类型为“System.Guid”的对象强制转换为类型“System.IConvertible”。不能在 ParentId 列中存储 <ab3e0c71-00a0-4d3e-a077-d71c9a5221b0>。所需类型是 Int32。
+
+2021/06/07 15:37:03::无法将类型为“System.Guid”的对象强制转换为类型“System.IConvertible”。不能在 ParentId 列中存储 <43a48d45-e1a8-45ad-a6f9-4cf9f6f0c3a3>。所需类型是 Int32。
+
+2021/06/07 15:48:31::该字符串未被识别为有效的 DateTime。不能在 Vaccination2Date 列中存储 <>。所需类型是 DateTime。
+
+2021/06/07 15:55:32::列“DetailId”不允许 DBNull.Value。
+
+2021/06/07 15:55:38::列“DetailId”不允许 DBNull.Value。
+
+2021/06/07 15:55:58::列“DetailId”不允许 DBNull.Value。
+
+2021/06/07 15:56:07::列“DetailId”不允许 DBNull.Value。
+
+2021/06/07 18:16:32::无法将类型为“System.Guid”的对象强制转换为类型“System.IConvertible”。不能在 ID 列中存储 <a0851e75-d2bc-4528-b076-637fb95be8b4>。所需类型是 Int32。
+
+2021/06/07 18:16:49::无法将类型为“System.Guid”的对象强制转换为类型“System.IConvertible”。不能在 ID 列中存储 <c9735dd6-a36b-4be5-8b07-26779e71559f>。所需类型是 Int32。
+
+2021/06/07 18:17:16::无法将类型为“System.Guid”的对象强制转换为类型“System.IConvertible”。不能在 ID 列中存储 <15cdfcc5-ea3e-4f32-a55d-aed71810a68c>。所需类型是 Int32。
+

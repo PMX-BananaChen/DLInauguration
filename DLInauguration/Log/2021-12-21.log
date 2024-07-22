@@ -1,0 +1,12 @@
+2021/12/21 09:24:36::Invalid column name 'attribute_type'.
+
+2021/12/21 09:24:52::Invalid column name 'attribute_type'.
+
+2021/12/21 09:53:38::Invalid column name 'attribute_type'.
+
+2021/12/21 10:59:59::ExecuteReader requires an open and available Connection. The connection's current state is closed.
+
+2021/12/21 11:11:16::There is already an open DataReader associated with this Command which must be closed first.
+
+2021/12/21 11:12:58::ExecuteReader requires an open and available Connection. The connection's current state is closed.
+

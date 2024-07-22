@@ -1,0 +1,22 @@
+﻿        * {
+            font-size: 12pt;
+        }
+
+        .price-title {
+            margin-top: 100px;
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+.tbl {
+    border: solid 1px #cbcbcb;
+    width: 26%;
+    clear: both;
+    margin-left:30px;
+}
+    .tbl td {
+        line-height: 30px;
+        text-indent: 11px;
+        border: solid 1px #cbcbcb;
+    }

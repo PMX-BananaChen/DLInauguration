@@ -1,0 +1,58 @@
+E:\Projects\DLInauguration\DAL\bin\Debug\DAL.dll
+E:\Projects\DLInauguration\DAL\bin\Debug\DAL.pdb
+E:\Projects\DLInauguration\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\Projects\DLInauguration\DAL\obj\Debug\DAL.dll
+E:\Projects\DLInauguration\DAL\obj\Debug\DAL.pdb
+E:\Projects\DLInauguration\DAL\bin\Debug\Common.dll
+E:\Projects\DLInauguration\DAL\bin\Debug\Common.pdb
+D:\DLInauguration_DG\DAL\bin\Debug\DAL.dll
+D:\DLInauguration_DG\DAL\bin\Debug\DAL.pdb
+D:\DLInauguration_DG\DAL\bin\Debug\Common.dll
+D:\DLInauguration_DG\DAL\bin\Debug\Common.pdb
+D:\DLInauguration_DG\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\DLInauguration_DG\DAL\obj\Debug\DAL.dll
+D:\DLInauguration_DG\DAL\obj\Debug\DAL.pdb
+F:\DLInauguration_DG\DAL\bin\Debug\DAL.dll
+F:\DLInauguration_DG\DAL\bin\Debug\DAL.pdb
+F:\DLInauguration_DG\DAL\bin\Debug\Common.dll
+F:\DLInauguration_DG\DAL\bin\Debug\Common.pdb
+F:\DLInauguration_DG\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+F:\DLInauguration_DG\DAL\obj\Debug\DAL.dll
+F:\DLInauguration_DG\DAL\obj\Debug\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Debug\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Debug\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Debug\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Debug\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Debug\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Debug\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Debug\DAL.dll
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Debug\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Debug\Common.dll
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Debug\Common.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Debug\DAL.dll
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Debug\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Debug\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Debug\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Debug\Common.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Debug\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Debug\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Debug\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Debug\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Debug\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Debug\Common.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Debug\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Debug\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Debug\DAL.pdb
+D:\入职系统_东莞有验证码页面\DAL\bin\Debug\DAL.dll
+D:\入职系统_东莞有验证码页面\DAL\bin\Debug\DAL.pdb
+D:\入职系统_东莞有验证码页面\DAL\bin\Debug\Common.dll
+D:\入职系统_东莞有验证码页面\DAL\bin\Debug\Common.pdb
+D:\入职系统_东莞有验证码页面\DAL\obj\Debug\DAL.dll
+D:\入职系统_东莞有验证码页面\DAL\obj\Debug\DAL.pdb
+D:\入职系统_东莞有验证码页面\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\入职系统_东莞有验证码页面\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\入职系统_东莞有验证码页面\DAL\obj\Debug\DAL.csproj.CopyComplete

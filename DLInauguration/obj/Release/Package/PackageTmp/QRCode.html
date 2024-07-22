@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="style/css/framework-font.css" rel="stylesheet" />
+    <link href="style/css/framework-theme.css" rel="stylesheet" />
+    <link href="style/css/framework-ui.css" rel="stylesheet" />
+    <script src="scripts/jquery/jquery-2.1.1.min.js"></script>
+    <script src="scripts/bootstrap/bootstrap.js"></script>
+    <link href="scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="scripts/qrcode/jquery.qrcode.js"></script>
+    <script src="scripts/qrcode/qrcode.js"></script>
+    <script>
+    $(function () {
+        $('#qrcodeTable').qrcode({
+            render: "table",
+            text: "www.baidu.com",
+            width: "265",
+            height: "265"
+        });
+    });
+    function createqrcode() {
+        $("#qrcodeTable").html("");
+        $('#qrcodeTable').qrcode({
+            render: "table",
+            text: $("#txt_barcod").val(),
+            width: "265",
+            height: "265"
+        });
+    }
+    </script>
+</head>
+<body>
+    <form id="form1">
+        <div class="mail-box">
+            <div class="mail-header">生成二維碼</div>
+            <div class="mail-body">
+                <table class="form">
+                    <tr>
+                        <th class="formTitle">二維碼內容</th>
+                        <td class="formValue">
+                            <div class="input-group">
+                                <input id="txt_barcod" name="txt_barcod" type="text" class="form-control required" placeholder="請輸入要生成二維碼的字符串">
+                                <span class="input-group-btn">
+                                    <a onclick="createqrcode()" class="btn  btn-primary" style="padding-left:10px;padding-right:10px;font-size:12px;line-height: 20px;">生成</a>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle" valign="top" style="padding-top:25px;">二維碼圖像</th>
+                        <td class="formValue" style="padding-top:20px;">
+                            <div id="qrcodeTable"></div>
+                            <div style="color: #aaaaaa;margin-top:10px;">使用手機相機掃一掃</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

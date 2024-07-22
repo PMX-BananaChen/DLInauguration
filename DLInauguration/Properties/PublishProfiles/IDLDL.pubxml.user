@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>D:\入职\dg</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/BLL.dll">
+      <publishTime>01/12/2022 14:24:03</publishTime>
+    </File>
+    <File Include="bin/Common.dll">
+      <publishTime>01/12/2022 14:24:03</publishTime>
+    </File>
+    <File Include="bin/DAL.dll">
+      <publishTime>01/12/2022 14:24:03</publishTime>
+    </File>
+    <File Include="bin/DLInauguration.dll">
+      <publishTime>01/12/2022 14:24:04</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="DL/BatchPrint.aspx">
+      <publishTime>01/04/2022 14:02:45</publishTime>
+    </File>
+    <File Include="DL/InaugrationRecords.aspx">
+      <publishTime>01/04/2022 15:34:55</publishTime>
+    </File>
+    <File Include="DL/InaugurationDetail.aspx">
+      <publishTime>01/04/2022 14:00:11</publishTime>
+    </File>
+    <File Include="DL/InaugurationDetailVaccine.aspx">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="DL/WebForm1.aspx">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="EducationIDL.html">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="ExpectWorkIDL.html">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="Family.html">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="FamilyIDL.html">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="FriendIDL.html">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="IDL/BatchPrint_IDL.aspx">
+      <publishTime>12/31/2021 16:38:10</publishTime>
+    </File>
+    <File Include="IDL/InaugrationRecords_IDL.aspx">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="IDL/InaugurationDetailVaccine_IDL.aspx">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="IDL/InaugurationDetail_IDL.aspx">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="images/001.jpg">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/404.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/add.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/arrow_03.gif">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/arrow_04.gif">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/arrow_05.gif">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/arrow_06.gif">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/banner.jpg">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/btnbg.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/btnbg1.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/btnbg2.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/buttonbg.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/c01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/c02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/c03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/cbg.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/clist.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/close.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/close1.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/cloud.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d04.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d05.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d06.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/d07.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/default-logo.gif">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/diskbg.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/dp.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f04.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f05.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/f06.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/help.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i04.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i05.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i06.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i07.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i08.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/i09.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/iadd.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ibtnbg.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico04.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico05.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/ico06.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon03.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon04.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon05.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/icon06.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/img01.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/img02.png">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="images/img03.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img04.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img05.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img06.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img07.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img08.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img09.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img10.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img11.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img12.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img13.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img14.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/img15.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/inputbg.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/itabbg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/itabbg1.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico01.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico02.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico03.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico04.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico05.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftico06.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftline.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/leftmenubg.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/lefttop.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/libg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/light.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/line.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/line1.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/list.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/list1.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/list2.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginbg1.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginbg2.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginbg3.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/logininfo.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginlogo.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginpassword.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginsj.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/loginuser.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/logo.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/map.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/msg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/navbg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/next.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/pre.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/px.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/righttop.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/rlist.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/search.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/sj.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/sun.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/t01.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/t02.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/t03.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/t04.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/t05.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/tbg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/tcbg.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/th.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/ticon.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/time.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/toolbg.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/topbg.gif">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/topleft.jpg">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/topright.jpg">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/ub1.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/uew_icon.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/uew_icon_hover.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/ulist.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/user.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="images/userbg.png">
+      <publishTime>12/31/2021 16:38:13</publishTime>
+    </File>
+    <File Include="InitChannel.ashx">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="InitHandler.ashx">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="LicenseIDL.html">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="Linkman.html">
+      <publishTime>12/31/2021 17:42:43</publishTime>
+    </File>
+    <File Include="LinkmanIDL.html">
+      <publishTime>12/31/2021 16:38:11</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="QRCode.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="Register.html">
+      <publishTime>01/12/2022 10:25:00</publishTime>
+    </File>
+    <File Include="RegisterHandler.ashx">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="RegisterIDL.html">
+      <publishTime>01/12/2022 10:25:09</publishTime>
+    </File>
+    <File Include="RelativesInCompany.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="RelativesInCompanyIDL.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="scripts/bootstrap/bootstrap.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/bootstrap/bootstrap.min.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/checkIdentity.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/jquery/jquery-1.10.2.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/jquery/jquery-1.8.0.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/jquery/jquery-2.1.1.min.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/jquery/jquery-migrate-1.1.0.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/jquery/jquery.jqprint-0.3.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/less/less.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/calendar.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/config.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/lang/en.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/lang/zh-cn.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/lang/zh-tw.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/My97DatePicker.htm">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/datePicker.gif">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/default/datepicker.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/default/img.gif">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/twoer/datepicker-dev.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/twoer/datepicker.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/twoer/img.gif">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/twoer/img.png">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/WdatePicker.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/whyGreen/bg.jpg">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/whyGreen/datepicker.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/skin/whyGreen/img.gif">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/My97DatePicker/WdatePicker.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/province.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/qrcode/jquery.qrcode.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/qrcode/qrcode.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/relationship.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/select-ui.min.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="scripts/serializeObject.js">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/css/framework-about.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/css/framework-font.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/css/framework-login.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/css/framework-theme.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/css/framework-ui.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/fontawesome-webfont.eot">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/fontawesome-webfont.svg">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/fontawesome-webfont.ttf">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/fontawesome-webfont.woff">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/fontawesome-webfont.woff2">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/FontAwesome.otf">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/glyphicons-halflings-regulard41d.eot">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/weathericons-regular-webfont.eot">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/weathericons-regular-webfont.svg">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/weathericons-regular-webfont.ttf">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/weathericons-regular-webfont.woff">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/fonts/weathericons-regular-webfontd41d.eot">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/Login.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/print.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/select.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/style.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/fn.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/mixin/mobile.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/mixin/setArrow.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/mixin/setOnepx.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/mixin/text.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/reset.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/color.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/global.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-button.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-cell.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-dialog.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-grid.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-msg.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-progress.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/base/variable/weui-tab.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/icon/weui-font.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/icon/weui-icon_font.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/weui.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/weuix.css">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-agree/weui-agree.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-animate/weui-animate.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_cell.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_default.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_disabled.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_global.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_loading.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_plain.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_primary.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-btn_warn.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-button/weui-button.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-access.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-cell_global.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-cell_swiped.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-check.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-check/weui-checkbox.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-check/weui-check_common.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-check/weui-radio.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-form.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-form/weui-form-preview.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-form/weui-form_common.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-form/weui-select.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-form/weui-vcode.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-gallery.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-switch.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-cell/weui-uploader.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-flex/weui-flex.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-footer/weui-footer.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-grid/weui-grid.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-loading/weui-loading.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-media-box/weui-media-box.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-page/weui-article.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-page/weui-msg.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-panel/weui-panel.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-picker/weui-picker.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-progress/weui-progress.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-searchbar/weui-searchbar.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-slider/weui-slider.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tab/weui-navbar.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tab/weui-tab.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tab/weui-tabbar.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-actionsheet.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-badge.less">
+      <publishTime>12/31/2021 16:38:14</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-dialog.less">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-loadmore.less">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-mask.less">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="style/weui/widget/weui-tips/weui-toast.less">
+      <publishTime>12/31/2021 16:38:15</publishTime>
+    </File>
+    <File Include="Success.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="Vaccine.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="VaccineIDL.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/04/2022 14:16:04</publishTime>
+    </File>
+    <File Include="WorkExperience.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+    <File Include="WorkExperienceIDL.html">
+      <publishTime>12/31/2021 16:38:12</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

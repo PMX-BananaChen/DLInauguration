@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>IDL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                //window.location.href = "/EducationIDL.html";
+                window.location.href = "/RegisterIDL.html";
+            }
+
+
+            var a = 0;
+            if ($("#c1").val() == a) {
+                $("#c1").attr("checked", "checked");
+                $("#c2").removeAttr("checked");
+            } else {
+                $("#c2").attr("checked", "checked");
+                $("#c1").removeAttr("checked");
+            }
+
+            $("#educationSel").change(function () {
+
+
+                var $bornYear = "2000";
+                var txtArr = ['小学', '初中', '高中', '职高/中专', '专科', '大学本科', '硕士', '博士', '其他'];
+                var valArr = ['01', '02', '03', '04', '05', '06', '07', '08', '09'];
+                var entranceArr = [6, 12, 15, 15, 18, 18];
+                var graduationArr = [12, 15, 18, 18, 21, 22];
+                var $val = $(this).val();
+                if ($val == "00" || $val == "07" || $val == "08" || $val == "09") {
+                    $("#entranceDate").val("");
+                    $("#graduationDate").val("");
+                } else {
+                    for (var i = 0; i < valArr.length; i++) {
+                        if (valArr[i] == $val) {
+                            var $entranceDay = "" + (entranceArr[i] + Number($bornYear)) + "-09-01";
+                            var $graduationDay = "" + (graduationArr[i] + Number($bornYear)) + "-06-30";
+                            $("#entranceDate").val($entranceDay);
+                            $("#graduationDate").val($graduationDay);
+                            break;
+                        }
+                    }
+                }
+
+            });
+
+            $("#studyModeSel").change(function () {
+
+                var txtArr = ['全日制统招', '自考', '成人教育', '在职教育', '网络教育', '函授教育', '留学', '其他'];
+                var valArr = ['1', '2', '3', '4', '5', '6', '7', '9'];
+
+            });
+
+            $("#degreeSel").change(function () {
+
+                var txtArr = ['博士', '硕士', '双学士', '学士'];
+                var valArr = ['1', '2', '3', '4'];
+
+            });
+
+
+            //初始化学历
+
+            initEducation();
+            initDegreeSel();
+            initStudyModeSel();
+            initEducationList();
+
+
+
+        });
+
+
+        //[{"school":"学校名称","education":"本科"},{"school":"学校名称","education":"专科"}]
+        function sethtml($id, $school, $educationship) {
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindF(this);'><div class='weui-cell__bd'><p>" + $school
+                        + "</p></div><div class='weui-cell__ft'>" + $educationship
+                        + "</div></a>";
+            return $html;
+        }
+
+        //初始化教育程度列表
+        function initEducationList() {
+            var $jsonObj = localStorage.getItem("education_IDL");
+            // var $jsonObj = "[{ \"school\": \"学校名称\", \"education\": \"本科\" }, { \"school\": \"学校名称\", \"education\": \"专科\" }]";
+            var $educationObj = JSON.parse($jsonObj);
+            var strHtml = "";
+            for (var i = 0; $educationObj != null && i < $educationObj.length; i++) {
+                var $id = $educationObj[i]["id"];
+                var $school = $educationObj[i]["school"];
+                var $education = $educationObj[i]["education"];
+                var $educationship = $("#educationSel option[value='" + $education + "']").text();
+                strHtml += sethtml($id, $school, $educationship);
+            }
+            $("#fList").html("");
+            $("#fList").append(strHtml);
+        }
+
+        function bindF(obj) {
+            var $aId = $(obj).attr("id");
+
+            var $jsonObj = localStorage.getItem("education_IDL");
+            var $educationObj = JSON.parse($jsonObj);
+            for (var i = 0; $educationObj != null && i < $educationObj.length; i++) {
+                var $id = $educationObj[i]["id"];
+                if ($aId == $id) {
+                    var $education = $educationObj[i]["education"];
+                    var $school = $educationObj[i]["school"];
+                    var $subject = $educationObj[i]["subject"];
+                    var $entranceDate = $educationObj[i]["entranceDate"];
+                    var $graduationDate = $educationObj[i]["graduationDate"];
+                    var $degree = $educationObj[i]["degree"];
+                    //var $degreeship = $("#degreeSel option[value='" + $degree + "']").text();
+                    //alert($educationObj[i]["studyMode"]);
+                    var $studyMode = $educationObj[i]["studyMode"];
+
+                    //var $studyModeship = $("#studyModeSel option[value='" + $studyMode + "']").text();
+
+                    $("#id").val($id);
+                    $("#subject").val($subject);
+                    $("#school").val($school);
+                    $("#entranceDate").val($entranceDate);
+                    $("#graduationDate").val($graduationDate);
+                    $("#degreeSel option:[value='" + $degree + "']").attr("selected", "true");
+                    $("#studyModeSel option:[value='" + $studyMode + "']").attr("selected", "true");
+                    $("#educationSel option:[value='" + $education + "']").attr("selected", "true");
+
+                    //var $education = $employeeObj["education"];
+                    //$("#educationSel option:[value='" + $education + "']").attr("selected", "true");
+
+                    //var $degree = $educationObj[i]["degree"];
+                    //$("#degreeSel option:[value='" + $degree + "']").attr("selected", "true");
+
+
+                    //var $studyMode = $educationObj[i]["studyMode"];
+                    //$("#studyModeSel option:[value='" + $studyMode + "']").attr("selected", "true");
+
+
+                    //var $certificate = $educationObj[i]["certificate"];
+                    //if ($("#c1").val() == $employeeObj["certificate"]) {
+                    //    $("#c1").attr("checked", "checked");
+                    //    $("#c2").removeAttr("checked");
+                    //} else {
+                    //    $("#c2").attr("checked", "checked");
+                    //    $("#c1").removeAttr("checked");
+                    //}
+
+                    break;
+                }
+            }
+        }
+
+        function saveF() {
+            var $jsonObj = localStorage.getItem("education_IDL");
+            //var $educationObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $educationObj != null && $educationObj.length == 3) {
+            //    alert("最多填写三个毕业院校!");
+            //    setEmpty();
+            //    return;
+            //}
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                var $jsonObj = localStorage.getItem("education_IDL");
+                if ($jsonObj == null) {
+                    localStorage.setItem("education_IDL", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    var $educationObj = JSON.parse($jsonObj);
+                    $educationObj.push($formData);
+                    var $strJson = JSON.stringify($educationObj);
+                    localStorage.setItem("education_IDL", $strJson);
+                    var $localJson = localStorage.getItem("education_IDL");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("education_IDL");
+                var $educationObj = JSON.parse($jsonObj);
+                for (var i = 0; $educationObj != null && i < $educationObj.length; i++) {
+                    var $id = $educationObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $educationObj.splice(i, 1, $formData);
+
+                        break;
+                    }
+                }
+                localStorage.setItem("education_IDL", JSON.stringify($educationObj));
+            }
+            //alert("保存成功");
+
+            initEducation();
+            initDegreeSel();
+            initStudyModeSel();
+            setEmpty();
+            initEducationList();
+            window.location.href = "/FamilyIDL.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#education").val("");
+            $("#school").val("");
+            $("#subject").val("");
+            $("#entranceDate").val("");
+            $("#graduationDate").val("");
+
+        }
+
+
+        function checkEducation() {
+            var $eduNo = $("#educationSel option:selected").val();
+            var $DreNo = $("#degreeSel option:selected").val();
+            var $ModNo = $("#studyModeSel option:selected").val();
+            if ($eduNo == "00") {
+                alert('请选择最高学历，若没有则选择 "其他" ');
+                $("#educationSel").focus();
+                return false;
+            }
+                //非必填
+                //else if ($DreNo == "0") {
+                //    alert('请选择学位！');
+                //    $("#degreeSel").focus();
+                //    return false;
+                //}
+            else if ($ModNo == "0") {
+                alert('请选择学习方式！');
+                $("#studyModeSel").focus();
+                return false;
+            } else if ($eduNo != "09") {
+                var $school = $("#school").val().trim();
+                if ($school == "") {
+                    alert("请填写学校名称!");
+                    $("#school").focus();
+                    return false;
+                } else if ($school.length < 4) {
+                    alert("学校名称不能少于四个字，请重新填写!");
+                    $("#school").focus();
+                    return false;
+                }
+                // if ($("#c1").attr("checked")) {
+                var $entranceDate = $("#entranceDate").val().trim();
+                var $graduationDate = $("#graduationDate").val().trim();
+                if ($entranceDate == "") {
+                    alert("请填写入学日期!");
+                    $("#entranceDate").focus();
+                    return false;
+                }
+                if ($graduationDate == "") {
+                    alert("请填写毕业日期!");
+                    $("#graduationDate").focus();
+                    return false;
+                }
+                if (new Date($entranceDate) > new Date($graduationDate)) {
+                    alert("入学日期必须早于毕业日期，请重新填写!");
+                    $("#entranceDate").focus();
+                    return false;
+                }
+                if (new Date($graduationDate) > new Date()) {
+                    alert("毕业日期必须早于今天，请重新填写!");
+                    $("#graduationDate").focus();
+                    return false;
+                }
+                // }
+            }
+            return true;
+        }
+
+
+        //检验表单输入
+        function checkForm() {
+
+            //教育程度
+            if (!checkEducation()) {
+                return false;
+            }
+
+
+            return true;
+        }
+
+        function deleteF() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一个学校!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("education_IDL");
+                var $educationObj = JSON.parse($jsonObj);
+                for (var i = 0; $educationObj != null && i < $educationObj.length; i++) {
+                    var $id = $educationObj[i]["id"];
+                    if ($idflag == $id) {
+                        $educationObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("education_IDL", JSON.stringify($educationObj));
+                initEducationList();
+                initEducation();
+                initDegreeSel();
+                initStudyModeSel();
+                setEmpty();
+            }
+        }
+        function next() {
+            var $jsonObj = localStorage.getItem("education_IDL");
+            var $familyObj = JSON.parse($jsonObj);
+            if ($familyObj == null || $familyObj.length == 0) {
+                alert("请保存后点击下一步!");
+                $("#school").focus();
+                return;
+            }
+            window.location.href = "/FamilyIDL.html";
+
+        }
+
+
+        function initEducation() {
+            var arr = ['小学', '初中', '高中', '职高/中专', '专科', '大学本科', '硕士', '博士', '其他'];
+            $("#educationSel").append("<option value='00'>请选择最高学历</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='0" + (index + 1) + "'>" + element + "</option>";
+                $("#educationSel").append(str);
+            });
+        }
+
+        //非必填项
+        function initDegreeSel() {
+            var arr = ['博士', '硕士', '双学士', '学士'];
+            $("#degreeSel").append("<option value=''>请选择学位信息");
+            $.each(arr, function (index, element) {
+                var str = "<option value=' " + (index + 1) + "'>" + element + "</option>";
+                $("#degreeSel").append(str);
+            });
+        }
+        function initStudyModeSel() {
+            var arr = ['全日制统招', '自考', '成人教育', '在职教育', '网络教育', '函授教育', '留学'];
+            $("#studyModeSel").append("<option value='0'>请选择学习形式");
+            $.each(arr, function (index, element) {
+                var str = "<option value='" + (index + 1) + "'>" + element + "</option>";
+                $("#studyModeSel").append(str);
+            });
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">教育程度</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">最高学历</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="educationSel" class="weui-select" name="education"></select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">学位</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="degreeSel" class="weui-select" name="degree"></select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">学习形式</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="studyModeSel" class="weui-select" name="studyMode"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">毕业学校</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="school" name="school" maxlength="30" placeholder="请输入最高学历毕业学校名字" />
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">所属科系</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="subject" name="subject" maxlength="30" placeholder="请输入所属科系名称" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">证&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;书</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-form-checkbox" name="certificate" id="c1" type="radio" checked="checked" value="0">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>毕业</p></div></i>
+                    <input class="weui-form-checkbox" name="certificate" id="c2" type="radio" style="margin-left:30px;" value="1">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>肄业</p></div></i>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">入学日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="entranceDate" name="entranceDate" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">毕业日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="graduationDate" name="graduationDate" />
+                </div>
+            </div>
+        </div>
+        <!--<div class="weui-cells__title">毕业院校列表</div>
+        <div class="weui-cells" id="fList">-->
+        </div>
+        <div class="weui-btn-area v-center">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteF();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

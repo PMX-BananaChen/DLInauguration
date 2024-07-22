@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+
+    <title>IDL入职信息化系统</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/checkIdentity.js"></script>
+    <script src="scripts/province.js"></script>
+    <link href="style/weui/weuix.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+        $(function () {
+            $("#reason").hide()
+            $(".weui-label").css("width", "150px")
+
+            var obj = eval('(' + localStorage.getItem("employeeInfo_IDL") + ')');
+            var identityNo = obj[0].identityNo
+            $("#identityNo").val(identityNo)
+            $("#IsVaccination").val(1) //必须接种疫苗
+
+            //不允许选择当天之后的日期
+            //得到当前时间
+            var date_now = new Date();
+            //得到当前年份
+            var year = date_now.getFullYear();
+            //得到当前月份
+            //注：
+            //  1：js中获取Date中的month时，会比当前月份少一个月，所以这里需要先加一
+            //  2: 判断当前月份是否小于10，如果小于，那么就在月份的前面加一个 '0' ， 如果大于，就显示当前月份
+            var month = date_now.getMonth() + 1 < 10 ? "0" + (date_now.getMonth() + 1) : (date_now.getMonth() + 1);
+            //得到当前日子（多少号）
+            var date = date_now.getDate() < 10 ? "0" + date_now.getDate() : date_now.getDate();
+            //设置input标签的max属性
+            $("#Vaccination1Date,#Vaccination2Date,#Vaccination3Date").attr("max", year + "-" + month + "-" + date);
+
+            //初始化接种针剂
+            initChannel();
+
+            // 初始化未接种原因
+            initReason();
+
+            $("#Vaccination1,#Vaccination2,#Vaccination3").change(function () {
+                var txtArr = ['北京生物(成都生物、兰州生物、长春生物、武汉生物)', '北京科兴', '智飞生物', '康希诺'];
+                var valArr = ['01', '02', '07', '08'];
+            });
+
+            $("#Remark").change(function () {
+                var txtArr = ['否', '是，对疫苗过敏', '是，处于妊娠期', '是，患癫痫、脑病等其他进行性神经疾病', '是，处于严重的慢性疾病中'];
+                var valArr = ['01', '02', '03', '04', '05'];
+            });
+        });
+
+        // 重置
+        function setEmpty() {
+            $("#Vaccination1,#Vaccination2,#Vaccination3,#Vaccination1Date,#Vaccination2Date,#Vaccination3Date").val(null)
+            localStorage.setItem("vaccine_IDL", null);
+        }
+
+        // 初始化针剂值
+        function initChannel() {
+            var arr = ['北京生物(成都生物、兰州生物、长春生物、武汉生物)', '北京科兴'];
+            var arr1 = ['智飞生物']
+            var arr2 = ['康希诺']
+            $("#Vaccination1").append("<option value=''>请选择第一针接种厂家</option>");
+            $("#Vaccination2").append("<option value=''>请选择第二针接种厂家</option>");
+            $("#Vaccination3").append("<option value=''>请选择第三针接种厂家</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='0" + (index + 1) + "'>" + element + "</option>";
+                $("#Vaccination1,#Vaccination2,#Vaccination3").append(str);
+            });
+            $.each(arr1, function (index, element) {
+                var str1 = "<option value='07'>" + element + "</option>";
+                $("#Vaccination1,#Vaccination2,#Vaccination3").append(str1);
+            });
+            $.each(arr2, function (index, element) {
+                var str2 = "<option value='08'>" + element + "</option>";
+                $("#Vaccination1,#Vaccination2,#Vaccination3").append(str2);
+            });
+        }
+
+        // 初始化未接种原因
+        function initReason() {
+            var arr = ['否', '是，对疫苗过敏', '是，处于妊娠期', '是，患癫痫、脑病等其他进行性神经疾病', '是，处于严重的慢性疾病中'];
+            $("#Remark").append("<option value=''>请选择未接种原因</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='0" + (index + 1) + "'>" + element + "</option>";
+                $("#Remark").append(str);
+            });
+        }
+
+        // 表单校验
+        function checkForm() {
+            var first = $("#Vaccination1Date").val()
+            var second = $("#Vaccination2Date").val()
+            var third = $("#Vaccination3Date").val()
+            var firstTime = new Date(first); // 第一针接种时间
+            var secondTime = new Date(second); // 第二针接种时间
+            var thirdTime = new Date(third); // 第三针接种时间
+            var day = new Date(); // 当前时间
+
+            if (first == "") {
+                alert("第一针时间必填,否则无法提交!");
+                return false;
+            }
+
+            if (second == "") {
+                alert("第二针时间必填,否则无法提交!");
+                return false;
+            }
+
+            if ($("#Vaccination1").val() == "") {
+                alert("第一针必填,否则无法提交!");
+                return false;
+            }
+
+            if ($("#Vaccination2").val() == "") {
+                alert("第二针必填,否则无法提交!");
+                return false;
+            }
+
+            if (first != "") {
+                if (firstTime > day) {
+                    alert("不可选择将来时间!");
+                    return false;
+                }
+            }
+
+            if (second != "") {
+                if (secondTime > day) {
+                    alert("不可选择将来时间!");
+                    return false;
+                }
+            }
+
+            if (third != "") {
+                if (thirdTime > day) {
+                    alert("不可选择将来时间!");
+                    return false;
+                }
+            }
+
+            // 判断第二针接种联合填写
+            if ($("#Vaccination2").val() != "") {
+                if (second == "") {
+                    alert("请选择二针接种时间!");
+                    return false;
+                }
+            } else if (second != "") {
+                if (!$("#Vaccination2").val()) {
+                    alert("请选择二针接种厂商!");
+                    return false;
+                }
+            }
+
+            //// 判断第三针接种联合填写
+            //if ($("#Vaccination3").val() != "") {
+            //    if (third == "") {
+            //        alert("请选择三针接种时间!");
+            //        return false;
+            //    }
+            //} else if (third != "") {
+            //    if (!$("#Vaccination3").val()) {
+            //        alert("请选择三针接种厂商!");
+            //        return false;
+            //    }
+            //}
+
+            // 填写了第三针信息必须填写前两针信息
+            if ($("#Vaccination3").val() != "" && $("#Vaccination2").val() == "") {
+                alert("填写第三针信息必须填写第二针信息!");
+                return false;
+            }
+
+            // 填写了第三针信息必须填写第三针时间
+            if ($("#Vaccination3").val() != "" && third == "") {
+                alert("填写第三针信息必须填写第三针时间,若误填第三针信息,可置空后再填写!");
+                return false;
+            }
+
+            // 填写了第三针时间必须填写第三针信息
+            if ($("#Vaccination3").val() == "" && third != "") {
+                alert("填写第三针时间必须填写第三针厂家,若误填第三针信息,可置空后再填写!");
+                return false;
+            }
+
+            // 判断第二针日期不可早于第一针
+            if (first != "" && second != "") {
+                if (second < first) {
+                    alert("第二针接种日期不可早于第一针接种日期");
+                    return false;
+                }
+
+                // 校验两针天数是否大于21天
+                if ((secondTime - firstTime) / (1000 * 60 * 60 * 24) < 21) {
+                    alert("第二针与第一针间隔需大于21天,请确认!");
+                    return false;
+                }
+            }
+
+            // 判断第三针日期不可早于第一二针
+            if (third != "" && second != "") {
+                if (third < second) {
+                    alert("第三针接种日期不可早于第二针接种日期");
+                    return false;
+                }
+
+                if (third < first) {
+                    alert("第三针接种日期不可早于第一针接种日期");
+                    return false;
+                }
+
+                // 校验两针天数是否大于21天
+                if ((thirdTime - secondTime) / (1000 * 60 * 60 * 24) < 180) {
+                    alert("第三针与第二针间隔需大于180天,请确认!");
+                    return false;
+                }
+            }
+
+            // 校验两针疫苗接种厂商是否一致
+            // 此校验废弃
+            //if ($("#Vaccination1").val() && $("#Vaccination2").val()) {
+            //    if ($("#Vaccination1").val() != $("#Vaccination2").val()
+            //        || $("#Vaccination2").val() != $("#Vaccination1").val()) {
+            //        alert("两针厂商不一致,请确认!");
+            //        return false;
+            //    }
+            //}
+
+            return true;
+        }
+
+        // 保存
+        function saveF() {
+
+        }
+
+
+        function saveAll(obj) {
+            if (!checkForm()) {
+                return;
+            }
+
+            if ($("#Vaccination3Date").val() == "") {
+                $("#Vaccination3Date").val("1900-01-01")
+            }
+            var vaccine = $("#form").serializeObject()
+            localStorage.setItem("vaccine_IDL", JSON.stringify(vaccine));
+
+            //只能提交一次
+            var $employeeIDL = localStorage.getItem("employeeInfo_IDL");
+            $employeeIDL = $employeeIDL.replace("titleid\":\"\"", "titleid\":\"IDL\"")
+            var $familyIDL = localStorage.getItem("Family_IDL");
+            var $WorkExperienceIDL = localStorage.getItem("workExperience_IDL");
+            var $relativesIDL = localStorage.getItem("RelativesInCompany_IDL");
+            var $EducationIDL = localStorage.getItem("education_IDL");
+            var $ExpectWorkIDL = localStorage.getItem("expectWork_IDL");
+            var $FriendIDL = localStorage.getItem("friend_IDL");
+            var $LicenseIDL = localStorage.getItem("license_IDL");
+            var $LinkmanIDL = localStorage.getItem("linkman_IDL");
+            var $Vaccine_IDL = localStorage.getItem("vaccine_IDL")
+
+            var $jsonStr = "{\"Employee_IDL\":" + $employeeIDL + ",\"Families_IDL\":" + $familyIDL +
+                ",\"WorkExperience_IDL\":" + $WorkExperienceIDL + ",\"Linkman_IDL\":" + $LinkmanIDL +
+                ",\"Education_IDL\":" + $EducationIDL + ",\"ExpectWork_IDL\":" + $ExpectWorkIDL +
+                ",\"License_IDL\":" + $LicenseIDL + ",\"RelativesInCompany_IDL\":" + $relativesIDL +
+                ",\"Friend_IDL\":" + $FriendIDL + ",\"Vaccine_IDL\":[" + $Vaccine_IDL + "]}";
+
+            var json = JSON.parse($jsonStr)
+            console.log(json)
+
+            //if (!json.Vaccine_IDL) {
+            //    alert("请填写后提交!")
+            //    return
+            //}
+
+            // 点击后去除点击事件,防止重复请求
+            // $('#submitId').removeAttr('onclick')
+
+            $.ajax({
+                url: "RegisterHandler.ashx",
+                data: { "dataObj": $jsonStr },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    var $obj = data;
+                    if ($obj.result == "true") {
+                        window.location.href = "/Success.html";
+                    } else {
+                        alert("保存失败");
+                        window.location.reload();
+                    }
+
+                },
+                error: function () {
+                    alert("保存失败");
+                    window.location.reload();
+                },
+                asyn: true
+            })
+        }
+
+
+    </script>
+
+</head>
+<body ontouchstart>
+    <div class="weui-cells__title">疫苗接种情况调查</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input name="identityNo" id="identityNo" type="text" value="" />
+                    <input name="IsVaccination" id="IsVaccination" type="text" value="" />
+                    <textarea cols="20" rows="5" id="Remark" name="Remark"></textarea>
+                </div>
+            </div>
+            <!--<div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">是否接种新冠疫苗</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-form-checkbox" name="IsVaccination" id="s1" type="radio" value="1" readonly>
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>是</p></div></i>
+                    <input class="weui-form-checkbox" name="IsVaccination" id="s2" type="radio" style="margin-left:30px;" value="0" readonly>
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>否</p></div></i>
+                </div>
+            </div>-->
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">第一针接种厂家</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="Vaccination1" class="weui-select" name="Vaccination1"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">第一针接种日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="Vaccination1Date" name="Vaccination1Date" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">第二针接种厂家</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="Vaccination2" class="weui-select" name="Vaccination2"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">第二针接种日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="Vaccination2Date" name="Vaccination2Date" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">第三针接种厂家</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="Vaccination3" class="weui-select" name="Vaccination3"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">第三针接种日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="Vaccination3Date" name="Vaccination3Date" />
+                </div>
+            </div>
+        </div>
+        <!--<div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">备注说明</label></div>
+            <div class="weui-cell__bd">
+                <textarea cols="20" rows="5" id="Remark" name="Remark"></textarea>
+            </div>
+        </div>-->
+
+        <div class="weui-btn-area">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" id="submitId" href="javascript:" onclick="saveAll(this);">提交</a>
+        </div>
+    </form>
+</body>
+</html>

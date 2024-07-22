@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>IDL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                window.location.href = "/LicenseIDL.html";
+                // window.location.href = "/RegisterIDL.html";
+            }
+            initLicense();
+        });
+
+
+        function sethtml($id, $license, $unit) {
+
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindF(this);'><div class='weui-cell__bd'><p>" + $license
+                        + "</p></div><div class='weui-cell__ft'>" + $unit
+                        + "</div></a>";
+            //alert($html);
+            return $html;
+
+
+        }
+
+        //初始化履历列表
+        function initLicense() {
+
+            var $jsonObj = localStorage.getItem("license_IDL");
+            var $licenseObj = JSON.parse($jsonObj);
+            var strHtml = "";
+            for (var i = 0; $licenseObj != null && i < $licenseObj.length; i++) {
+                var $id = $licenseObj[i]["id"];
+                var $license = $licenseObj[i]["license"];//证书名称
+                var $unit = $licenseObj[i]["unit"];//承办单位
+
+                strHtml += sethtml($id, $license, $unit);
+
+
+            }
+            $("#fList").html("");
+            $("#fList").append(strHtml);
+        }
+
+        function bindF(obj) {
+            // alert("ok");
+            var $aId = $(obj).attr("id");
+            var $jsonObj = localStorage.getItem("license_IDL");
+            var $licenseObj = JSON.parse($jsonObj);
+            for (var i = 0; $licenseObj != null && i < $licenseObj.length; i++) {
+                var $id = $licenseObj[i]["id"];
+                if ($aId == $id) {
+
+                    var $license = $licenseObj[i]["license"];//证书名称
+                    var $unit = $licenseObj[i]["unit"];//承办单位
+                    var $number = $licenseObj[i]["number"];
+                    var $hour = $licenseObj[i]["hour"];
+                    var $startDate = $licenseObj[i]["startDate"];
+                    var $endDate = $licenseObj[i]["endDate"];
+
+                    $("#id").val($id);
+                    $("#license").val($license);
+                    $("#unit").val($unit);
+                    $("#number").val($number);
+                    $("#hour").val($hour);
+                    $("#startDate").val($startDate);
+                    $("#endDate").val($endDate);
+                    break;
+
+
+                }
+            }
+        }
+
+        function saveF() {
+            var $jsonObj = localStorage.getItem("license_IDL");
+            //var $licenseObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $licenseObj != null && $licenseObj.length == 3) {
+            //    alert("最多填写三个证书!");
+            //    setEmpty();
+            //    return;
+            //}
+
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+
+                var $jsonObj = localStorage.getItem("license_IDL");
+                if ($jsonObj == null) {
+
+                    localStorage.setItem("license_IDL", "[" + JSON.stringify($formData) + "]");
+                } else {
+
+                    var $licenseObj = JSON.parse($jsonObj);
+                    $licenseObj.push($formData);
+                    var $strJson = JSON.stringify($licenseObj);
+
+                    localStorage.setItem("license_IDL", $strJson);
+                    var $localJson = localStorage.getItem("license_IDL");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("license_IDL");
+                var $licenseObj = JSON.parse($jsonObj);
+                for (var i = 0; $licenseObj != null && i < $licenseObj.length; i++) {
+                    var $id = $licenseObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $licenseObj.splice(i, 1, $formData);
+
+                        break;
+                    }
+                }
+                localStorage.setItem("license_IDL", JSON.stringify($licenseObj));
+            }
+            //alert("保存成功");
+            initLicense();
+            setEmpty();
+            window.location.href = "/FriendIDL.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#number").val("");
+            $("#license").val("");
+            $("#unit").val("");
+            $("#hour").val("");
+            $("#startDate").val("9999-12-31");//受訓期間始
+            $("#endDate").val("9999-12-31"); //受訓期間末
+
+        }
+
+        //检验表单输入
+        function checkForm() {
+            //检验证照号码是否输入为空
+            var $job = $("#number").val().trim();
+            if ($job == "") {
+                alert("请输入证照号码!")
+                $("#number").focus();
+                return false;
+            }
+            //检验证照名称是否输入为空
+            var $company = $("#license").val().trim();
+            if ($company == "") {
+                alert("请输入证照名称!")
+                $("#license").focus();
+                return false;
+            }
+
+            //检验承办单位是否输入为空
+            var $manager = $("#unit").val().trim();
+            if ($manager == "") {
+                alert("请输入承办单位!")
+                $("#unit").focus();
+                return false;
+            }
+
+            //检验总时数是否输入为空
+            var $hour = $("#hour").val().trim();
+            var reg = /^\d+(\.\d+)?$/;
+            if ($hour == "") {
+                alert("请输入总时数!")
+                $("#hour").focus();
+                return false;
+            } else if (!reg.test($hour)) {
+                alert("待遇输入格式有误，请重新输入");
+                $("#hour").focus();
+                return false;
+            }
+
+            //检验受训期间是否输入为空
+
+
+            var $startDate = $("#startDate").val().trim();
+            var $endDate = $("#endDate").val().trim();
+            if ($startDate == "") {
+                alert("请填写受训开始时间!");
+                $("#startDate").focus();
+                return false;
+            }
+            if ($endDate == "") {
+                alert("请填写受训结束日期!");
+                $("#endDate").focus();
+                return false;
+            }
+            if (new Date($startDate) > new Date($endDate)) {
+                alert("开始日期必须早于结束日期，请重新填写!");
+                $("#startDate").focus();
+                return false;
+            }
+            if (new Date($endDate) > new Date()) {
+                alert("结束日期必须早于今天，请重新填写!");
+                $("#endDate").focus();
+                return false;
+            }
+
+
+            return true;
+        }
+
+        function deleteF() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一个證書信息!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("license_IDL");
+                var $licenseObj = JSON.parse($jsonObj);
+                for (var i = 0; $licenseObj != null && i < $licenseObj.length; i++) {
+                    var $id = $licenseObj[i]["id"];
+                    if ($idflag == $id) {
+                        $licenseObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("license_IDL", JSON.stringify($licenseObj));
+                initLicense();
+                setEmpty();
+            }
+        }
+        function next() {
+            var form = $("#form").serializeObject()
+            var arr = Object.values(form).filter(function (item) {
+                if (item !== '') {
+                    return true			//过滤掉为空的项
+                }
+            })
+            if (arr.length > 2) {
+                saveF()
+            } else {
+                localStorage.setItem("RelativesInCompany_IDL", null)
+                window.location.href = "/FriendIDL.html";  //資料朋友三人
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">重要受训记录/证照/执照<span style="font-size:18px;color:red;">没有则不填</span></div>
+
+
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">号码(证照号码)</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="number" name="number" maxlength="30" placeholder="请输入证照号码" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">训练/证照名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="license" name="license" maxlength="30" placeholder="请输入证照名称" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">承办单位</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="unit" name="unit" maxlength="30" placeholder="请输入承办单位" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">受训期间</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="2020-01-01" id="startDate" name="startDate" />  -  <input class="weui-input" type="date" value="2020-12-31" id="endDate" name="endDate" />
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">总时数</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="hour" name="hour" maxlength="10" placeholder="请输入总时数" />
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--<div class="weui-cells__title">重要受训记录/证照/执照列表</div>
+        <div class="weui-cells" id="fList">-->
+        </div>
+        <div class="weui-btn-area v-center">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteF();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="next();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

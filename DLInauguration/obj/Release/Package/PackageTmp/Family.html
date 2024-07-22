@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>DL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                //window.location.href = "/Family.html";
+                window.location.href = "/register.html";
+            }
+            initRelationship($("#relationshipSel"));
+            initOccupation();
+            initFamily();
+        });
+        function initOccupation() {
+            var arr = ["务农", "务工", "经商", "其他"];
+            $.each(arr, function (index, element) {
+                var $str = "<option value='" + element + "'>" + element + "</option>";
+                $("#occupationSel").append($str);
+            });
+        }
+
+        //[{"name":"张三","relation":"父子"},{"name":"李四","relation":"母子"}]
+        function sethtml($id, $name, $relationship) {
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindF(this);'><div class='weui-cell__bd'><p>" + $name
+                        + "</p></div><div class='weui-cell__ft'>" + $relationship
+                        + "</div></a>";
+            return $html;
+        }
+
+        //初始化家庭人员列表
+        function initFamily() {
+            var $jsonObj = localStorage.getItem("family");
+            var $familyObj = JSON.parse($jsonObj);
+            var strHtml = "";
+            for (var i = 0; $familyObj != null && i < $familyObj.length; i++) {
+                var $id = $familyObj[i]["id"];
+                var $name = $familyObj[i]["name"];
+                var $value = $familyObj[i]["relationship"];
+                var $relationship = $("#relationshipSel option[value='" + $value + "']").text();
+                strHtml += sethtml($id, $name, $relationship);
+            }
+            $("#fList").html("");
+            $("#fList").append(strHtml);
+        }
+
+        function bindF(obj) {
+            var $aId = $(obj).attr("id");
+            var $jsonObj = localStorage.getItem("family");
+            var $familyObj = JSON.parse($jsonObj);
+            for (var i = 0; $familyObj != null && i < $familyObj.length; i++) {
+                var $id = $familyObj[i]["id"];
+                if ($aId == $id) {
+                    var $name = $familyObj[i]["name"];
+                    var $value = $familyObj[i]["relationship"];
+                    var $gender = $familyObj[i]["gender"];
+                    var $occupation = $familyObj[i]["occupation"];
+                    var $phoneNumber = $familyObj[i]["phoneNumber"];
+                    var $address = $familyObj[i]["address"];
+                    $("#id").val($id);
+                    $("#name").val($name);
+                    $("#relationshipSel").val($value);
+                    $("input:radio[name='gender'][value='"+$gender+"']").attr("checked", "true");
+                    $("#occupationSel").val($occupation);
+                    //$("#occupation").val($occupation);
+                    $("#phoneNumber").val($phoneNumber);
+                    $("#address").val($address);
+                    break;
+                }
+            }
+        }
+
+        function saveF() {
+            var $jsonObj = localStorage.getItem("family");
+            var $familyObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $familyObj != null && $familyObj.length == 3) {
+            //    alert("最多填写三名家庭成员!");
+            //    setEmpty();
+            //    return;
+            //}
+
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                var $jsonObj = localStorage.getItem("family");
+                if ($jsonObj == null) {
+                    localStorage.setItem("family", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    var $familyObj = JSON.parse($jsonObj);
+                    $familyObj.push($formData);
+                    var $strJson = JSON.stringify($familyObj);
+                    localStorage.setItem("family", $strJson);
+                    var $localJson = localStorage.getItem("family");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("family");
+                var $familyObj = JSON.parse($jsonObj);
+                for (var i = 0; $familyObj != null && i < $familyObj.length; i++) {
+                    var $id = $familyObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $familyObj.splice(i, 1, $formData);
+                        break;
+                    }
+                }
+                localStorage.setItem("family", JSON.stringify($familyObj));
+            }
+            //alert("保存成功");
+            initFamily();
+            setEmpty();
+            window.location.href = "/RelativesInCompany.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#name").val("");
+            $("#relationshipSel").val("0");
+            $("input:radio[name='gender'][value='1']").attr("checked", "true");
+            $("#occupationSel").val("务农");
+            //$("#occupation").val("");
+            $("#phoneNumber").val("");
+            $("#address").val("");
+        }
+
+        //检验表单输入
+        function checkForm() {
+            var $jsonObj = localStorage.getItem("employeeInfo");
+            var $empObj = JSON.parse($jsonObj);
+            var $employeeObj = $empObj[0];
+            //检验姓名是否输入为空
+            var $name = $("#name").val().trim();
+            var reg = /^[\u2E80-\u9FFF]+$/;
+            if ($name == "") {
+                alert("请输入家庭成员姓名!");
+                $("#name").focus();
+                return false;
+            } else if (!reg.test($name)) {
+                alert("姓名输入有误，请重新输入");
+                $("#name").focus();
+                return false;
+            } else if ($name == $employeeObj["name"]) {
+                alert("不能填写本人姓名，请重写!");
+                $("#name").focus();
+                return false;
+            }
+            //检验关系是否选择
+            var $relationship = $("#relationshipSel option:selected").val();
+            if ($relationship == "0") {
+                alert("请选择关系!");
+                $("#relationshipSel").focus();
+                return false;
+            }
+            //检验职业是否输入为空
+            /*
+            var $occupation = $("#occupation").val().trim();
+            if ($occupation == "") {
+                alert("请输入家庭成员职业!");
+                $("#occupation").focus();
+                return false;
+            }
+            */
+            //检验手机号码是否输入有效
+            var $phoneNum = $("#phoneNumber").val().trim();
+            if ($phoneNum == "") {
+                alert("请输入家庭成员电话!");
+                $("#phoneNumber").focus();
+                return false;
+            }
+            else {
+                var reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+                if (!reg.test($phoneNum)) {
+                    alert("手机号码输入有误，请重新填写！");
+                    $("#phoneNumber").focus();
+                    return false;
+                } else if ($phoneNum == $employeeObj["phoneNumber"]) {
+                    alert("不能填写本人手机号码，请重写！");
+                    $("#phoneNumber").focus();
+                    return false;
+                }
+            }
+            //检验家庭人员居住地址是否输入为空
+            var $address = $("#address").val().trim();
+            if ($address == "") {
+                alert("请输入家庭成员居住地址!")
+                $("#address").focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function deleteF() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一名家庭成员!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("family");
+                var $familyObj = JSON.parse($jsonObj);
+                for (var i = 0; $familyObj != null && i < $familyObj.length; i++) {
+                    var $id = $familyObj[i]["id"];
+                    if ($idflag == $id) {
+                        $familyObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("family", JSON.stringify($familyObj));
+                initFamily();
+                setEmpty();
+            }
+        }
+        function next() {
+            if ($familyObj == null || $familyObj.length == 0) {
+                alert("至少填写一名家庭成员!");
+                $("#name").focus();
+                setEmpty();
+                return;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">家庭状况(已婚优先配偶，未婚的父母优先)</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="name" name="name" maxlength="20" placeholder="请输入家庭成员姓名" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="relationshipSel" class="weui-select" name="relationship"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-form-checkbox" name="gender" id="s1" type="radio" checked="checked" value="1">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>男</p></div></i>
+                    <input class="weui-form-checkbox" name="gender" id="s2" type="radio" style="margin-left:30px;" value="2">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>女</p></div></i>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</label></div>
+                <div class="weui-cell__bd">
+                    <select id="occupationSel" class="weui-select" name="occupation"></select>
+                    <!--<input class="weui-input" type="text" id="occupation" name="occupation" maxlength="15" placeholder="请输入家庭成员职业" />-->
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="请输入家庭成员电话" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="address" name="address" maxlength="50" placeholder="请输入家庭成员居住地址" />
+                </div>
+            </div>
+        </div>
+        <!--<div class="weui-cells__title">家庭成员列表</div>
+        <div class="weui-cells" id="fList">-->
+        </div>
+        <div class="weui-btn-area v-center">            
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteF();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

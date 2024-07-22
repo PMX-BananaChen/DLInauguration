@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0320A671-A81F-4B46-9BEF-07592F584B7F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DLInauguration</RootNamespace>
+    <AssemblyName>DLInauguration</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <PublishDatabases>false</PublishDatabases>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DL\BatchPrint.aspx" />
+    <Content Include="DL\InaugrationRecords.aspx" />
+    <Content Include="DL\InaugurationDetail.aspx" />
+    <Content Include="DL\InaugurationDetailVaccine.aspx" />
+    <Content Include="DL\WebForm1.aspx" />
+    <Content Include="EducationIDL.html" />
+    <Content Include="FamilyIDL.html" />
+    <Content Include="FriendIDL.html" />
+    <Content Include="IDL\BatchPrint_IDL.aspx" />
+    <Content Include="IDL\InaugrationRecords_IDL.aspx" />
+    <Content Include="IDL\InaugurationDetailVaccine_IDL.aspx" />
+    <Content Include="IDL\InaugurationDetail_IDL.aspx" />
+    <Content Include="LinkmanIDL.html" />
+    <Content Include="RelativesInCompanyIDL.html" />
+    <Content Include="Vaccine.html" />
+    <Content Include="VaccineIDL.html" />
+    <Content Include="WorkExperienceIDL.html" />
+    <Content Include="images\001.jpg" />
+    <Content Include="images\404.png" />
+    <Content Include="images\add.png" />
+    <Content Include="images\arrow_03.gif" />
+    <Content Include="images\arrow_04.gif" />
+    <Content Include="images\arrow_05.gif" />
+    <Content Include="images\arrow_06.gif" />
+    <Content Include="images\banner.jpg" />
+    <Content Include="images\btnbg.png" />
+    <Content Include="images\btnbg1.png" />
+    <Content Include="images\btnbg2.png" />
+    <Content Include="images\buttonbg.png" />
+    <Content Include="images\c01.png" />
+    <Content Include="images\c02.png" />
+    <Content Include="images\c03.png" />
+    <Content Include="images\cbg.png" />
+    <Content Include="images\clist.png" />
+    <Content Include="images\close.png" />
+    <Content Include="images\close1.png" />
+    <Content Include="images\cloud.png" />
+    <Content Include="images\d01.png" />
+    <Content Include="images\d02.png" />
+    <Content Include="images\d03.png" />
+    <Content Include="images\d04.png" />
+    <Content Include="images\d05.png" />
+    <Content Include="images\d06.png" />
+    <Content Include="images\d07.png" />
+    <Content Include="images\default-logo.gif" />
+    <Content Include="images\diskbg.png" />
+    <Content Include="images\dp.png" />
+    <Content Include="images\f01.png" />
+    <Content Include="images\f02.png" />
+    <Content Include="images\f03.png" />
+    <Content Include="images\f04.png" />
+    <Content Include="images\f05.png" />
+    <Content Include="images\f06.png" />
+    <Content Include="images\help.png" />
+    <Content Include="images\i01.png" />
+    <Content Include="images\i02.png" />
+    <Content Include="images\i03.png" />
+    <Content Include="images\i04.png" />
+    <Content Include="images\i05.png" />
+    <Content Include="images\i06.png" />
+    <Content Include="images\i07.png" />
+    <Content Include="images\i08.png" />
+    <Content Include="images\i09.png" />
+    <Content Include="images\iadd.png" />
+    <Content Include="images\ibtnbg.png" />
+    <Content Include="images\ico01.png" />
+    <Content Include="images\ico02.png" />
+    <Content Include="images\ico03.png" />
+    <Content Include="images\ico04.png" />
+    <Content Include="images\ico05.png" />
+    <Content Include="images\ico06.png" />
+    <Content Include="images\icon01.png" />
+    <Content Include="images\icon02.png" />
+    <Content Include="images\icon03.png" />
+    <Content Include="images\icon04.png" />
+    <Content Include="images\icon05.png" />
+    <Content Include="images\icon06.png" />
+    <Content Include="images\img01.png" />
+    <Content Include="images\img02.png" />
+    <Content Include="images\img03.png" />
+    <Content Include="images\img04.png" />
+    <Content Include="images\img05.png" />
+    <Content Include="images\img06.png" />
+    <Content Include="images\img07.png" />
+    <Content Include="images\img08.png" />
+    <Content Include="images\img09.png" />
+    <Content Include="images\img10.png" />
+    <Content Include="images\img11.png" />
+    <Content Include="images\img12.png" />
+    <Content Include="images\img13.png" />
+    <Content Include="images\img14.png" />
+    <Content Include="images\img15.png" />
+    <Content Include="images\inputbg.gif" />
+    <Content Include="images\itabbg.png" />
+    <Content Include="images\itabbg1.png" />
+    <Content Include="images\leftico.png" />
+    <Content Include="images\leftico01.png" />
+    <Content Include="images\leftico02.png" />
+    <Content Include="images\leftico03.png" />
+    <Content Include="images\leftico04.png" />
+    <Content Include="images\leftico05.png" />
+    <Content Include="images\leftico06.png" />
+    <Content Include="images\leftline.gif" />
+    <Content Include="images\leftmenubg.gif" />
+    <Content Include="images\lefttop.gif" />
+    <Content Include="images\libg.png" />
+    <Content Include="images\light.png" />
+    <Content Include="images\line.gif" />
+    <Content Include="images\line1.png" />
+    <Content Include="images\list.gif" />
+    <Content Include="images\list1.gif" />
+    <Content Include="images\list2.png" />
+    <Content Include="images\loginbg1.png" />
+    <Content Include="images\loginbg2.png" />
+    <Content Include="images\loginbg3.png" />
+    <Content Include="images\logininfo.png" />
+    <Content Include="images\loginlogo.png" />
+    <Content Include="images\loginpassword.png" />
+    <Content Include="images\loginsj.png" />
+    <Content Include="images\loginuser.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\map.gif" />
+    <Content Include="images\msg.png" />
+    <Content Include="images\navbg.png" />
+    <Content Include="images\next.gif" />
+    <Content Include="images\pre.gif" />
+    <Content Include="images\px.gif" />
+    <Content Include="images\righttop.gif" />
+    <Content Include="images\rlist.gif" />
+    <Content Include="images\search.png" />
+    <Content Include="images\sj.png" />
+    <Content Include="images\sun.png" />
+    <Content Include="images\t01.png" />
+    <Content Include="images\t02.png" />
+    <Content Include="images\t03.png" />
+    <Content Include="images\t04.png" />
+    <Content Include="images\t05.png" />
+    <Content Include="images\tbg.png" />
+    <Content Include="images\tcbg.gif" />
+    <Content Include="images\th.gif" />
+    <Content Include="images\ticon.png" />
+    <Content Include="images\time.png" />
+    <Content Include="images\toolbg.gif" />
+    <Content Include="images\topbg.gif" />
+    <Content Include="images\topleft.jpg" />
+    <Content Include="images\topright.jpg" />
+    <Content Include="images\ub1.png" />
+    <Content Include="images\uew_icon.png" />
+    <Content Include="images\uew_icon_hover.png" />
+    <Content Include="images\ulist.png" />
+    <Content Include="images\user.png" />
+    <Content Include="images\userbg.png" />
+    <Content Include="LicenseIDL.html" />
+    <Content Include="Login.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="RegisterIDL.html" />
+    <Content Include="scripts\bootstrap\bootstrap.js" />
+    <Content Include="scripts\bootstrap\bootstrap.min.css" />
+    <Content Include="scripts\checkIdentity.js" />
+    <Content Include="scripts\jquery\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery\jquery-1.8.0.js" />
+    <Content Include="scripts\jquery\jquery-2.1.1.min.js" />
+    <Content Include="scripts\jquery\jquery-migrate-1.1.0.js" />
+    <Content Include="scripts\jquery\jquery.jqprint-0.3.js" />
+    <Content Include="scripts\less\less.js" />
+    <Content Include="scripts\My97DatePicker\calendar.js" />
+    <Content Include="scripts\My97DatePicker\config.js" />
+    <Content Include="scripts\My97DatePicker\lang\en.js" />
+    <Content Include="scripts\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="scripts\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="scripts\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="scripts\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="scripts\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="scripts\My97DatePicker\skin\default\img.gif" />
+    <Content Include="scripts\My97DatePicker\skin\twoer\datepicker-dev.css" />
+    <Content Include="scripts\My97DatePicker\skin\twoer\datepicker.css" />
+    <Content Include="scripts\My97DatePicker\skin\twoer\img.gif" />
+    <Content Include="scripts\My97DatePicker\skin\twoer\img.png" />
+    <Content Include="scripts\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="scripts\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="scripts\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="scripts\province.js" />
+    <Content Include="scripts\qrcode\jquery.qrcode.js" />
+    <Content Include="scripts\qrcode\qrcode.js" />
+    <Content Include="scripts\relationship.js" />
+    <Content Include="scripts\select-ui.min.js" />
+    <Content Include="scripts\serializeObject.js" />
+    <Content Include="style\fonts\fontawesome-webfont.eot" />
+    <Content Include="style\fonts\fontawesome-webfont.svg" />
+    <Content Include="style\fonts\fontawesome-webfont.ttf" />
+    <Content Include="style\fonts\fontawesome-webfont.woff" />
+    <Content Include="style\fonts\fontawesome-webfont.woff2" />
+    <Content Include="style\fonts\FontAwesome.otf" />
+    <Content Include="style\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="style\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="style\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="style\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="style\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="style\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="style\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="style\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="style\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="style\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="style\fonts\weathericons-regular-webfontd41d.eot" />
+    <Content Include="style\Login.css" />
+    <Content Include="style\print.css" />
+    <Content Include="style\select.css" />
+    <Content Include="style\style.css" />
+    <Content Include="style\weui\weui.less" />
+    <Content Include="style\weui\widget\weui-agree\weui-agree.less" />
+    <Content Include="style\weui\widget\weui-animate\weui-animate.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_cell.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_default.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_disabled.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_global.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_loading.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_plain.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_primary.less" />
+    <Content Include="style\weui\widget\weui-button\weui-btn_warn.less" />
+    <Content Include="style\weui\widget\weui-button\weui-button.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-access.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-cell_global.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-cell_swiped.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-check.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-check\weui-checkbox.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-check\weui-check_common.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-check\weui-radio.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-form.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-form\weui-form-preview.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-form\weui-form_common.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-form\weui-select.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-form\weui-vcode.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-gallery.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-switch.less" />
+    <Content Include="style\weui\widget\weui-cell\weui-uploader.less" />
+    <Content Include="style\weui\widget\weui-flex\weui-flex.less" />
+    <Content Include="style\weui\widget\weui-footer\weui-footer.less" />
+    <Content Include="style\weui\widget\weui-grid\weui-grid.less" />
+    <Content Include="style\weui\widget\weui-loading\weui-loading.less" />
+    <Content Include="style\weui\widget\weui-media-box\weui-media-box.less" />
+    <Content Include="style\weui\widget\weui-page\weui-article.less" />
+    <Content Include="style\weui\widget\weui-page\weui-msg.less" />
+    <Content Include="style\weui\widget\weui-panel\weui-panel.less" />
+    <Content Include="style\weui\widget\weui-picker\weui-picker.less" />
+    <Content Include="style\weui\widget\weui-progress\weui-progress.less" />
+    <Content Include="style\weui\widget\weui-searchbar\weui-searchbar.less" />
+    <Content Include="style\weui\widget\weui-slider\weui-slider.less" />
+    <Content Include="style\weui\widget\weui-tab\weui-navbar.less" />
+    <Content Include="style\weui\widget\weui-tab\weui-tab.less" />
+    <Content Include="style\weui\widget\weui-tab\weui-tabbar.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-actionsheet.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-badge.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-dialog.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-loadmore.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-mask.less" />
+    <Content Include="style\weui\widget\weui-tips\weui-toast.less" />
+    <Content Include="style\weui\icon\weui-font.less" />
+    <Content Include="style\weui\icon\weui-icon_font.less" />
+    <Content Include="style\weui\base\fn.less" />
+    <Content Include="style\weui\base\mixin\mobile.less" />
+    <Content Include="style\weui\base\mixin\setArrow.less" />
+    <Content Include="style\weui\base\mixin\setOnepx.less" />
+    <Content Include="style\weui\base\mixin\text.less" />
+    <Content Include="style\weui\base\reset.less" />
+    <Content Include="style\weui\base\variable\color.less" />
+    <Content Include="style\weui\base\variable\global.less" />
+    <Content Include="style\weui\base\variable\weui-button.less" />
+    <Content Include="style\weui\base\variable\weui-cell.less" />
+    <Content Include="style\weui\base\variable\weui-dialog.less" />
+    <Content Include="style\weui\base\variable\weui-grid.less" />
+    <Content Include="style\weui\base\variable\weui-msg.less" />
+    <Content Include="style\weui\base\variable\weui-progress.less" />
+    <Content Include="style\weui\base\variable\weui-tab.less" />
+    <Content Include="RegisterHandler.ashx" />
+    <Content Include="InitHandler.ashx" />
+    <Content Include="ExpectWorkIDL.html" />
+    <Content Include="InitChannel.ashx" />
+    <None Include="Properties\PublishProfiles\IDLDL.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Family.html" />
+    <Content Include="Linkman.html" />
+    <Content Include="QRCode.html" />
+    <Content Include="Register.html" />
+    <Content Include="RelativesInCompany.html" />
+    <Content Include="style\css\framework-about.css" />
+    <Content Include="style\css\framework-font.css" />
+    <Content Include="style\css\framework-login.css" />
+    <Content Include="style\css\framework-theme.css" />
+    <Content Include="style\css\framework-ui.css" />
+    <Content Include="style\weui\weuix.css" />
+    <Content Include="Success.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WorkExperience.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DL\BatchPrint.aspx.cs">
+      <DependentUpon>BatchPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL\BatchPrint.aspx.designer.cs">
+      <DependentUpon>BatchPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL\InaugrationRecords.aspx.cs">
+      <DependentUpon>InaugrationRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL\InaugrationRecords.aspx.designer.cs">
+      <DependentUpon>InaugrationRecords.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL\InaugurationDetail.aspx.cs">
+      <DependentUpon>InaugurationDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL\InaugurationDetail.aspx.designer.cs">
+      <DependentUpon>InaugurationDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL\InaugurationDetailVaccine.aspx.cs">
+      <DependentUpon>InaugurationDetailVaccine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL\InaugurationDetailVaccine.aspx.designer.cs">
+      <DependentUpon>InaugurationDetailVaccine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDL\BatchPrint_IDL.aspx.cs">
+      <DependentUpon>BatchPrint_IDL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDL\BatchPrint_IDL.aspx.designer.cs">
+      <DependentUpon>BatchPrint_IDL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDL\InaugrationRecords_IDL.aspx.cs">
+      <DependentUpon>InaugrationRecords_IDL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDL\InaugrationRecords_IDL.aspx.designer.cs">
+      <DependentUpon>InaugrationRecords_IDL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDL\InaugurationDetailVaccine_IDL.aspx.cs">
+      <DependentUpon>InaugurationDetailVaccine_IDL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDL\InaugurationDetailVaccine_IDL.aspx.designer.cs">
+      <DependentUpon>InaugurationDetailVaccine_IDL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IDL\InaugurationDetail_IDL.aspx.cs">
+      <DependentUpon>InaugurationDetail_IDL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IDL\InaugurationDetail_IDL.aspx.designer.cs">
+      <DependentUpon>InaugurationDetail_IDL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InitChannel.ashx.cs">
+      <DependentUpon>InitChannel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="InitHandler.ashx.cs">
+      <DependentUpon>InitHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterHandler.ashx.cs">
+      <DependentUpon>RegisterHandler.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{8404354c-50f2-44a8-bd6e-9791b0e5406f}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{c01ad420-ebdc-4cba-81af-7ca428d06e40}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:45783/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:29987/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

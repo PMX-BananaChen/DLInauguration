@@ -1,0 +1,74 @@
+E:\Projects\DLInauguration\BLL\bin\Debug\BLL.dll
+E:\Projects\DLInauguration\BLL\bin\Debug\BLL.pdb
+E:\Projects\DLInauguration\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\Projects\DLInauguration\BLL\obj\Debug\BLL.dll
+E:\Projects\DLInauguration\BLL\obj\Debug\BLL.pdb
+E:\Projects\DLInauguration\BLL\bin\Debug\DAL.dll
+E:\Projects\DLInauguration\BLL\bin\Debug\DAL.pdb
+E:\Projects\DLInauguration\BLL\bin\Debug\Common.dll
+E:\Projects\DLInauguration\BLL\bin\Debug\Common.pdb
+D:\DLInauguration_DG\BLL\bin\Debug\BLL.dll
+D:\DLInauguration_DG\BLL\bin\Debug\BLL.pdb
+D:\DLInauguration_DG\BLL\bin\Debug\Common.dll
+D:\DLInauguration_DG\BLL\bin\Debug\DAL.dll
+D:\DLInauguration_DG\BLL\bin\Debug\Common.pdb
+D:\DLInauguration_DG\BLL\bin\Debug\DAL.pdb
+D:\DLInauguration_DG\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\DLInauguration_DG\BLL\obj\Debug\BLL.dll
+D:\DLInauguration_DG\BLL\obj\Debug\BLL.pdb
+F:\DLInauguration_DG\BLL\bin\Debug\BLL.dll
+F:\DLInauguration_DG\BLL\bin\Debug\BLL.pdb
+F:\DLInauguration_DG\BLL\bin\Debug\Common.dll
+F:\DLInauguration_DG\BLL\bin\Debug\DAL.dll
+F:\DLInauguration_DG\BLL\bin\Debug\Common.pdb
+F:\DLInauguration_DG\BLL\bin\Debug\DAL.pdb
+F:\DLInauguration_DG\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\DLInauguration_DG\BLL\obj\Debug\BLL.dll
+F:\DLInauguration_DG\BLL\obj\Debug\BLL.pdb
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\BLL.dll
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\BLL.pdb
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\BLL\bin\Debug\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\BLL\obj\Debug\BLL.dll
+E:\.net project 入职最新\DLInauguration_DG\BLL\obj\Debug\BLL.pdb
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\BLL.dll
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\BLL.pdb
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\Common.dll
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\DAL.dll
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\Common.pdb
+E:\.net projectnew\DLInauguration_DG\BLL\bin\Debug\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\.net projectnew\DLInauguration_DG\BLL\obj\Debug\BLL.dll
+E:\.net projectnew\DLInauguration_DG\BLL\obj\Debug\BLL.pdb
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\BLL.dll
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\BLL.pdb
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\Common.dll
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\BLL\bin\Debug\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\BLL\obj\Debug\BLL.dll
+E:\.net project\ruzhiDG_yongzhege\BLL\obj\Debug\BLL.pdb
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\BLL.dll
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\BLL.pdb
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\Common.dll
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\BLL\bin\Debug\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\BLL\obj\Debug\BLL.dll
+E:\.net project\入职系统\入职系统_东莞\BLL\obj\Debug\BLL.pdb
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\BLL.dll
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\BLL.pdb
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\Common.dll
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\DAL.dll
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\Common.pdb
+D:\入职系统_东莞有验证码页面\BLL\bin\Debug\DAL.pdb
+D:\入职系统_东莞有验证码页面\BLL\obj\Debug\BLL.dll
+D:\入职系统_东莞有验证码页面\BLL\obj\Debug\BLL.pdb
+D:\入职系统_东莞有验证码页面\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\入职系统_东莞有验证码页面\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\入职系统_东莞有验证码页面\BLL\obj\Debug\BLL.csproj.CopyComplete

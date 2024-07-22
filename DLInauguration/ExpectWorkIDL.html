@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>IDL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                window.location.href = "/RegisterIDL.html";
+            }
+
+        });
+
+        function saveF() {
+            if (!checkForm()) {
+                return;
+            }
+            var $jsonObj = localStorage.getItem("expectWork_IDL");
+            var $ExpectWorkObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                var $jsonObj = localStorage.getItem("expectWork_IDL");
+                if ($jsonObj == null) {
+                    localStorage.setItem("expectWork_IDL", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    var $ExpectWorkObj = JSON.parse($jsonObj);
+                    $ExpectWorkObj.push($formData);
+                    var $strJson = JSON.stringify($ExpectWorkObj);
+                    localStorage.setItem("expectWork_IDL", $strJson);
+                    var $localJson = localStorage.getItem("expectWork_IDL");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("expectWork_IDL");
+                var $ExpectWorkObj = JSON.parse($jsonObj);
+                for (var i = 0; $ExpectWorkObj != null && i < $ExpectWorkObj.length; i++) {
+                    var $id = $ExpectWorkObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $ExpectWorkObj.splice(i, 1, $formData);
+
+                        break;
+                    }
+                }
+                localStorage.setItem("expectWork_IDL", JSON.stringify($ExpectWorkObj));
+            }
+            //alert("保存成功");
+            // initExperience();
+            setEmpty();
+            window.location.href = "/LinkmanIDL.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#workExperience").val("");
+            $("#position").val("");
+            $("#salary").val("");
+            $("#hobbies").val("");
+        }
+
+
+        //检验表单输入
+        function checkForm() {
+            //检验工作经验是否输入为空
+            var $workExperience = $("#workExperience").val().trim();
+            if ($workExperience == "") {
+                alert("请输入工作经验!")
+                $("#workExperience").focus();
+                return false;
+            }
+            //检验期望职位是否输入为空
+            var $position = $("#position").val().trim();
+            if ($position == "") {
+                alert("请输入期望职位!")
+                $("#position").focus();
+                return false;
+            }
+
+            //检验期望薪资是否输入为空
+            var $salary = $("#salary").val().trim();
+            if ($salary == "") {
+                alert("请输入期望薪资!")
+                $("#salary").focus();
+                return false;
+            } else if ($salary.length > 7) {
+                alert("请输入实际期望薪资!")
+                $("#salary").focus();
+                return false;
+            }
+
+
+
+            //检验社交活动以及嗜好是否输入为空
+            var $hobbies = $("#hobbies").val().trim();
+            if ($hobbies == "") {
+                alert("请输入社交活动以及嗜好!")
+                $("#hobbies").focus();
+                return false;
+            }
+            return true;
+        }
+
+
+        function next() {
+            var form = $("#form").serializeObject()
+            var arr = Object.values(form).filter(function (item) {
+                if (item !== '') {
+                    return true			//过滤掉为空的项
+                }
+            })
+            if (arr.length > 0) {
+                saveF()
+            } else {
+                localStorage.setItem("expectWork_IDL", null)
+                window.location.href = "/LinkmanIDL.html";  //意外联络人
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">工作经验/期望职位/期望薪资</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">工作经验</label></div>
+                <div class="weui-cell__bd">
+                    <textarea cols="15" rows="10" id="workExperience" name="workExperience" placeholder="讲述工作经验(说明工作中最熟悉的部分)"></textarea>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">社交活动以及嗜好</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="hobbies" name="hobbies" maxlength="50" placeholder="请输入社交活动以及嗜好" />
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">期望职位</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="position" name="position" maxlength="20" placeholder="请输入期望职位" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">期望薪资</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="salary" name="salary" maxlength="10" placeholder="请输入期望薪资" />
+                </div>
+            </div>
+
+
+        </div>
+        <!--<div class="weui-cells__title">履历列表</div>
+        <div class="weui-cells" id="fList">-->
+        <!--</div>-->
+        <div class="weui-btn-area v-center">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>-->
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteF();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="next();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

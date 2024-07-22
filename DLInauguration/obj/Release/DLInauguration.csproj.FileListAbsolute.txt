@@ -1,0 +1,144 @@
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\csc.exe
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\vbc.exe
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\Projects\DLInauguration\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\Projects\DLInauguration\DLInauguration\bin\DLInauguration.dll.config
+E:\Projects\DLInauguration\DLInauguration\bin\DLInauguration.dll
+E:\Projects\DLInauguration\DLInauguration\bin\DLInauguration.pdb
+E:\Projects\DLInauguration\DLInauguration\bin\BLL.dll
+E:\Projects\DLInauguration\DLInauguration\bin\Common.dll
+E:\Projects\DLInauguration\DLInauguration\bin\DAL.dll
+E:\Projects\DLInauguration\DLInauguration\bin\BLL.pdb
+E:\Projects\DLInauguration\DLInauguration\bin\Common.pdb
+E:\Projects\DLInauguration\DLInauguration\bin\DAL.pdb
+E:\Projects\DLInauguration\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\Projects\DLInauguration\DLInauguration\obj\Release\DLInauguration.dll
+E:\Projects\DLInauguration\DLInauguration\obj\Release\DLInauguration.pdb
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\csc.exe
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\vbc.exe
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll.config
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\DLInauguration.pdb
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\BLL.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\Common.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\DAL.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\BLL.pdb
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\Common.pdb
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\bin\DAL.pdb
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.dll
+E:\.net project\入职系统新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.pdb
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\csc.exe
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\vbc.exe
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll.config
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\DLInauguration.pdb
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\BLL.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\BLL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\bin\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.dll
+E:\.net project 入职最新\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.pdb
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\csc.exe
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\vbc.exe
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll.config
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\DLInauguration.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\DLInauguration.pdb
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\BLL.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\Common.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\DAL.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\BLL.pdb
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\Common.pdb
+E:\.net projectnew\DLInauguration_DG\DLInauguration\bin\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\.net projectnew\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.dll
+E:\.net projectnew\DLInauguration_DG\DLInauguration\obj\Release\DLInauguration.pdb
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\csc.exe
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\vbc.exe
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\DLInauguration.dll.config
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\DLInauguration.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\DLInauguration.pdb
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\BLL.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\Common.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\BLL.pdb
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\bin\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\obj\Release\DLInauguration.dll
+E:\.net project\ruzhiDG_yongzhege\DLInauguration\obj\Release\DLInauguration.pdb
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\csc.exe
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\System.Collections.Immutable.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\System.Reflection.Metadata.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\vbc.exe
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\VBCSCompiler.exe
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\roslyn\VBCSCompiler.exe.config
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\DLInauguration.dll.config
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\DLInauguration.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\DLInauguration.pdb
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\BLL.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\Common.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\BLL.pdb
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\bin\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\obj\Release\DLInauguration.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\obj\Release\DLInauguration.dll
+E:\.net project\入职系统\入职系统_东莞\DLInauguration\obj\Release\DLInauguration.pdb

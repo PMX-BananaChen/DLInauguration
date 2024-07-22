@@ -1,0 +1,42 @@
+E:\Projects\DLInauguration\DAL\bin\Release\DAL.dll
+E:\Projects\DLInauguration\DAL\bin\Release\DAL.pdb
+E:\Projects\DLInauguration\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+E:\Projects\DLInauguration\DAL\obj\Release\DAL.dll
+E:\Projects\DLInauguration\DAL\obj\Release\DAL.pdb
+E:\Projects\DLInauguration\DAL\bin\Release\Common.dll
+E:\Projects\DLInauguration\DAL\bin\Release\Common.pdb
+F:\DLInauguration_DG\DAL\bin\Release\DAL.dll
+F:\DLInauguration_DG\DAL\bin\Release\DAL.pdb
+F:\DLInauguration_DG\DAL\bin\Release\Common.dll
+F:\DLInauguration_DG\DAL\bin\Release\Common.pdb
+F:\DLInauguration_DG\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+F:\DLInauguration_DG\DAL\obj\Release\DAL.dll
+F:\DLInauguration_DG\DAL\obj\Release\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Release\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Release\DAL.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Release\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\bin\Release\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Release\DAL.dll
+E:\.net project 入职最新\DLInauguration_DG\DAL\obj\Release\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Release\DAL.dll
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Release\DAL.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Release\Common.dll
+E:\.net projectnew\DLInauguration_DG\DAL\bin\Release\Common.pdb
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Release\DAL.dll
+E:\.net projectnew\DLInauguration_DG\DAL\obj\Release\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Release\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Release\DAL.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Release\Common.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\bin\Release\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Release\DAL.dll
+E:\.net project\ruzhiDG_yongzhege\DAL\obj\Release\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Release\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Release\DAL.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Release\Common.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\bin\Release\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Release\DAL.dll
+E:\.net project\入职系统\入职系统_东莞\DAL\obj\Release\DAL.pdb

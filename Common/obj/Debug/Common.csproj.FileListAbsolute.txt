@@ -1,0 +1,34 @@
+E:\Projects\DLInauguration\Common\bin\Debug\Common.dll
+E:\Projects\DLInauguration\Common\bin\Debug\Common.pdb
+E:\Projects\DLInauguration\Common\obj\Debug\Common.dll
+E:\Projects\DLInauguration\Common\obj\Debug\Common.pdb
+E:\Projects\DLInauguration\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\DLInauguration_DG\Common\bin\Debug\Common.dll
+D:\DLInauguration_DG\Common\bin\Debug\Common.pdb
+D:\DLInauguration_DG\Common\obj\Debug\Common.dll
+D:\DLInauguration_DG\Common\obj\Debug\Common.pdb
+D:\DLInauguration_DG\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+F:\DLInauguration_DG\Common\bin\Debug\Common.dll
+F:\DLInauguration_DG\Common\bin\Debug\Common.pdb
+F:\DLInauguration_DG\Common\obj\Debug\Common.dll
+F:\DLInauguration_DG\Common\obj\Debug\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\Common\bin\Debug\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\Common\bin\Debug\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\Common\obj\Debug\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\Common\obj\Debug\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\Common\bin\Debug\Common.dll
+E:\.net project\ruzhiDG_yongzhege\Common\bin\Debug\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Debug\Common.dll
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Debug\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\Common\bin\Debug\Common.dll
+E:\.net project\入职系统\入职系统_东莞\Common\bin\Debug\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Debug\Common.dll
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Debug\Common.pdb
+D:\入职系统_东莞有验证码页面\Common\bin\Debug\Common.dll
+D:\入职系统_东莞有验证码页面\Common\bin\Debug\Common.pdb
+D:\入职系统_东莞有验证码页面\Common\obj\Debug\Common.dll
+D:\入职系统_东莞有验证码页面\Common\obj\Debug\Common.pdb
+D:\入职系统_东莞有验证码页面\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\入职系统_东莞有验证码页面\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache

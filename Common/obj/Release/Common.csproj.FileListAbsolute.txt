@@ -1,0 +1,20 @@
+E:\Projects\DLInauguration\Common\bin\Release\Common.dll
+E:\Projects\DLInauguration\Common\bin\Release\Common.pdb
+E:\Projects\DLInauguration\Common\obj\Release\Common.dll
+E:\Projects\DLInauguration\Common\obj\Release\Common.pdb
+E:\Projects\DLInauguration\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\Common\bin\Release\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\Common\bin\Release\Common.pdb
+E:\.net project 入职最新\DLInauguration_DG\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+E:\.net project 入职最新\DLInauguration_DG\Common\obj\Release\Common.dll
+E:\.net project 入职最新\DLInauguration_DG\Common\obj\Release\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\Common\bin\Release\Common.dll
+E:\.net project\ruzhiDG_yongzhege\Common\bin\Release\Common.pdb
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Release\Common.dll
+E:\.net project\ruzhiDG_yongzhege\Common\obj\Release\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\Common\bin\Release\Common.dll
+E:\.net project\入职系统\入职系统_东莞\Common\bin\Release\Common.pdb
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Release\Common.dll
+E:\.net project\入职系统\入职系统_东莞\Common\obj\Release\Common.pdb

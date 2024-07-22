@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>DL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            if (!document.referrer) {
+                window.location.href = "/register.html";
+            }
+            initRelationship($("#relationshipSel"));
+            initLinkman();
+        });
+        //[{"name":"张三","relation":"父子"},{"name":"李四","relation":"母子"}]
+        function sethtml($id, $name, $relationship) {
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindL(this);'><div class='weui-cell__bd'><p>" + $name
+                        + "</p></div><div class='weui-cell__ft'>" + $relationship
+                        + "</div></a>";
+            return $html;
+        }
+
+
+        function initLinkman() {
+            var $jsonObj = localStorage.getItem("linkman");
+            // var $jsonObj = "[{ \"name\": \"张三\", \"relation\": \"父子\" }, { \"name\": \"李四\", \"relation\": \"母子\"}]";
+            var $linkmanObj = JSON.parse($jsonObj);
+            var strHtml = "";
+            for (var i = 0; $linkmanObj != null && i < $linkmanObj.length; i++) {
+                var $id = $linkmanObj[i]["id"];
+                var $name = $linkmanObj[i]["name"];
+                var $value = $linkmanObj[i]["relationship"];
+                var $relationship = $("#relationshipSel option[value='" + $value + "']").text();
+                strHtml += sethtml($id, $name, $relationship);
+            }
+            $("#lList").html("");
+            $("#lList").append(strHtml);
+        }
+
+        function bindL(obj) {
+            var $aId = $(obj).attr("id");
+            var $jsonObj = localStorage.getItem("linkman");
+            var $linkmanObj = JSON.parse($jsonObj);
+            for (var i = 0; $linkmanObj != null && i < $linkmanObj.length; i++) {
+                var $id = $linkmanObj[i]["id"];
+                if ($aId == $id) {
+                    var $name = $linkmanObj[i]["name"];
+                    var $value = $linkmanObj[i]["relationship"];
+                    var $phoneNumber = $linkmanObj[i]["phoneNumber"];
+                    var $address = $linkmanObj[i]["address"];
+                    $("#id").val($id);
+                    $("#name").val($name);
+                    $("#relationshipSel").val($value);
+                    $("#phoneNumber").val($phoneNumber);
+                    $("#address").val($address);
+                    break;
+                }
+            }
+        }
+
+        function saveL() {
+            var $jsonObj = localStorage.getItem("linkman");
+            var $linkmanObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $linkmanObj != null && $linkmanObj.length == 3) {
+            //    alert("最多填写三名家庭成员!");
+            //    setEmpty();
+            //    return;
+            //}
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                var $jsonObj = localStorage.getItem("linkman");
+                if ($jsonObj == null) {
+                    localStorage.setItem("linkman", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    var $linkmanObj = JSON.parse($jsonObj);
+                    $linkmanObj.push($formData);
+                    var $strJson = JSON.stringify($linkmanObj);
+                    localStorage.setItem("linkman", $strJson);
+                    var $localJson = localStorage.getItem("linkman");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("linkman");
+                var $linkmanObj = JSON.parse($jsonObj);
+                for (var i = 0; $linkmanObj != null && i < $linkmanObj.length; i++) {
+                    var $id = $linkmanObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $linkmanObj.splice(i, 1, $formData);
+                        break;
+                    }
+                }
+                localStorage.setItem("linkman", JSON.stringify($linkmanObj));
+            }
+            initLinkman();
+            setEmpty();
+            window.location.href = "/WorkExperience.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#name").val("");
+            $("#relationshipSel").val("0");
+            $("#phoneNumber").val("");
+            $("#address").val("");
+        }
+
+        //检验表单输入
+        function checkForm() {
+            var $jsonObj = localStorage.getItem("employeeInfo");
+            var $empObj = JSON.parse($jsonObj);
+            var $employeeObj = $empObj[0];
+            //检验姓名是否输入为空
+            var $name = $("#name").val().trim();
+            var reg = /^[\u2E80-\u9FFF]+$/;
+            if ($name == "") {
+                alert("请输入紧急联络人姓名!");
+                $("#name").focus();
+                return false;
+            } else if (!reg.test($name)) {
+                alert("姓名输入有误，请重新输入");
+                $("#name").focus();
+                return false;
+            } else if ($name == $employeeObj["name"]) {
+                alert("不能填写本人姓名，请重写!");
+                $("#name").focus();
+                return false;
+            } else if ($name.length <= 1) {
+                alert("姓名不得少于2个字,请重新输入!");
+                $("#name").focus();
+                return false;
+            }
+            //检验关系是否选择
+            var $relationship = $("#relationshipSel option:selected").val();
+            if ($relationship == "0") {
+                alert("请选择关系!");
+                $("#relationshipSel").focus();
+                return false;
+            }
+            //检验手机号码是否输入有效
+            var $phoneNum = $("#phoneNumber").val().trim();
+            if ($phoneNum == "") {
+                alert("请输入紧急联络人电话!");
+                $("#phoneNumber").focus();
+                return false;
+            }
+            else {
+                var reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+                if (!reg.test($phoneNum)) {
+                    alert("手机号码输入有误，请重新填写！");
+                    $("#phoneNumber").focus();
+                    return false;
+                } else if ($phoneNum == $employeeObj["phoneNumber"]) {
+                    alert("不能填写本人手机号码，请重写！");
+                    $("#phoneNumber").focus();
+                    return false;
+                }
+            }
+            //检验家庭人员居住地址是否输入为空
+            var $address = $("#address").val().trim();
+            if ($address == "") {
+                alert("请输入紧急联络人居住地址!")
+                $("#address").focus();
+                return false;
+            }
+            return true;
+        }
+
+        function deleteL() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一名紧急联络人!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("linkman");
+                var $linkmanObj = JSON.parse($jsonObj);
+                for (var i = 0; $linkmanObj != null && i < $linkmanObj.length; i++) {
+                    var $id = $linkmanObj[i]["id"];
+                    if ($idflag == $id) {
+                        $linkmanObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("linkman", JSON.stringify($linkmanObj));
+                initLinkman();
+                setEmpty();
+            }
+        }
+        function next() {
+            var $jsonObj = localStorage.getItem("linkman");
+            var $linkmanObj = JSON.parse($jsonObj);
+            if ($linkmanObj == null || $linkmanObj.length == 0) {
+                alert("至少填写一名紧急联络人!");
+                $("#name").focus();
+                return;
+            }
+            window.location.href = "/WorkExperience.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">发生意外联络人</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell" style="display:none">
+                    <div class="weui-cell__hd">
+                        <input id="id" name="id" type="text" value="" />
+                    </div>
+                </div>
+                <div class="weui-cell__hd"><label class="weui-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="name" name="name" maxlength="20" placeholder="请输入紧急联络人姓名" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="relationshipSel" class="weui-select" name="relationship"></select>
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="请输入紧急联络人电话" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="address" name="address" maxlength="50" placeholder="请输入紧急联络人居住地址" />
+                </div>
+            </div>
+        </div>
+        <!--<div class="weui-cells__title">紧急联络人列表</div>
+        <div class="weui-cells" id="lList">-->
+        </div>
+        <div class="weui-btn-area v-center">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveL();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteL();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveL();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>DL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                window.location.href = "/register.html"; 
+               
+            }
+            initWorkExperience();
+        });
+        function sethtml($id, $company, $occupation) {
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindW(this);'><div class='weui-cell__bd'><p>" + $company
+                        + "</p></div><div class='weui-cell__ft'>" + $occupation
+                        + "</div></a>";
+            return $html;
+        }
+
+        function initWorkExperience() {
+            var $jsonObj = localStorage.getItem("workExperience");
+            var $workExperienceObj = JSON.parse($jsonObj);
+            var strHtml = "";
+            for (var i = 0; $workExperienceObj != null && i < $workExperienceObj.length; i++) {
+                var $id = $workExperienceObj[i]["id"];
+                var $company = $workExperienceObj[i]["company"];
+                var $occupation = $workExperienceObj[i]["occupation"];
+                strHtml += sethtml($id, $company, $occupation);
+            }
+            $("#wList").html("");
+            $("#wList").append(strHtml);
+        }
+
+        function bindW(obj) {
+            var $aId = $(obj).attr("id");
+            var $jsonObj = localStorage.getItem("workExperience");
+            var $workExperienceObj = JSON.parse($jsonObj);
+            for (var i = 0; $workExperienceObj != null && i < $workExperienceObj.length; i++) {
+                var $id = $workExperienceObj[i]["id"];
+                if ($aId == $id) {
+                    var $company = $workExperienceObj[i]["company"];
+                    var $occupation = $workExperienceObj[i]["occupation"];
+                    var $reasonForLeaving = $workExperienceObj[i]["reasonForLeaving"];
+                    var $salary = $workExperienceObj[i]["salary"];
+                    var $employmentDate = $workExperienceObj[i]["employmentDate"];
+                    var $resignationDate = $workExperienceObj[i]["resignationDate"];
+                    $("#id").val($id);
+                    $("#company").val($company);
+                    $("#occupation").val($occupation);
+                    $("#reasonForLeaving").val($reasonForLeaving);
+                    $("#salary").val($salary);
+                    $("#employmentDate").val($employmentDate);
+                    $("#resignationDate").val($resignationDate);
+                    break;
+                }
+            }
+        }
+
+        function saveW() {
+            var $jsonObj = localStorage.getItem("workExperience");
+            var $workExperienceObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $workExperienceObj != null && $workExperienceObj.length == 3) {
+            //    alert("最多填写三项工作经历!");
+            //    setEmpty();
+            //    return;
+            //}
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                var $jsonObj = localStorage.getItem("workExperience");
+                if ($jsonObj == null) {
+                    localStorage.setItem("workExperience", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    var $workExperienceObj = JSON.parse($jsonObj);
+                    $workExperienceObj.push($formData);
+                    var $strJson = JSON.stringify($workExperienceObj);
+                    localStorage.setItem("workExperience", $strJson);
+                    var $localJson = localStorage.getItem("workExperience");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("workExperience");
+                var $workExperienceObj = JSON.parse($jsonObj);
+                for (var i = 0; $workExperienceObj != null && i < $workExperienceObj.length; i++) {
+                    var $id = $workExperienceObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $workExperienceObj.splice(i, 1, $formData);
+                        break;
+                    }
+                }
+                localStorage.setItem("workExperience", JSON.stringify($workExperienceObj));
+            }
+            initWorkExperience();
+            setEmpty();
+            window.location.href = "/Vaccine.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#company").val("");
+            $("#occupation").val("");
+            $("#reasonForLeaving").val("");
+            $("#salary").val("");
+            $("#employmentDate").val("");
+            $("#resignationDate").val("");
+        }
+
+        //检验表单输入
+        function checkForm() {
+            //检验公司名称是否输入为空
+            var $company = $("#company").val().trim();
+            if ($company == "") {
+                alert("请输入公司名称!");
+                $("#company").focus();
+                return false;
+            }
+            //检验职务名称是否输入为空
+            var $occupation = $("#occupation").val().trim();
+            if ($occupation == "") {
+                alert("请输入职务名称!");
+                $("#occupation").focus();
+                return false;
+            }
+
+            //检验离职原因是否输入为空
+            var $reasonForLeaving = $("#reasonForLeaving").val().trim();
+            if ($reasonForLeaving == "") {
+                alert("请输入离职原因!")
+                $("#reasonForLeaving").focus();
+                return false;
+            }
+            //检验待遇是否有效
+            var $salary = $("#salary").val().trim();
+            if ($salary == "") {
+                alert("请输入薪资待遇!")
+                $("#salary").focus();
+                return false;
+            } else if ($salary.length > 7) {
+                alert("请输入实际薪资待遇!")
+                $("#salary").focus();
+                return false;
+            }
+            //检验入职日期是否有效
+            var $employmentDate = $("#employmentDate").val().trim();
+            if ($employmentDate == "") {
+                alert("请输入入职日期!")
+                $("#employmentDate").focus();
+                return false;
+            } else if (new Date($employmentDate) >= new Date()) {
+                alert("入职日期必须早于今天");
+                $("#employmentDate").focus();
+                return false;
+            }
+            //检验离职日期是否有效
+            var $resignationDate = $("#resignationDate").val().trim();
+            if ($resignationDate == "") {
+                alert("请输入离职日期!")
+                $("#resignationDate").focus();
+                return false;
+            } else if (new Date($resignationDate) >= new Date()) {
+                alert("离职日期必须早于今天");
+                $("#resignationDate").focus();
+                return false;
+            }
+            if (new Date($employmentDate) >= new Date($resignationDate)) {
+                alert("入职日期必须早于离职日期");
+                $("#employmentDate").focus();
+                return false;
+            }
+            return true;
+        }
+
+        function deleteW() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一项工作经历!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("workExperience");
+                var $workExperienceObj = JSON.parse($jsonObj);
+                for (var i = 0; $workExperienceObj != null && i < $workExperienceObj.length; i++) {
+                    var $id = $workExperienceObj[i]["id"];
+                    if ($idflag == $id) {
+                        $workExperienceObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("workExperience", JSON.stringify($workExperienceObj));
+                initWorkExperience();
+                setEmpty();
+            }
+        }
+
+        function save() {
+            var form = $("#form").serializeObject()
+            var arr = Object.values(form).filter(function (item) {
+                if (item !== '') {
+                    return true			//过滤掉为空的项
+                }
+            })
+            if (arr.length > 0) {
+                saveW()
+            } else {
+                localStorage.setItem("workExperience", null)
+                window.location.href = "/Vaccine.html";
+            }
+        }
+
+
+        function saveAll(obj) {
+            var $company = $("#company").val().trim();
+            if ($company != "" && (!checkForm)) {
+                alert("如果填写公司名称，则必须填写其他必填内容");
+                return;
+            }
+            //只能提交一次
+           // $(obj).attr("disabled", "true");
+            var $employee = localStorage.getItem("employeeInfo");
+            var $family = localStorage.getItem("family");
+            var $relatives = localStorage.getItem("relatives");
+            var $linkman = localStorage.getItem("linkman");
+            var $workExperience = localStorage.getItem("workExperience");
+            var $jsonStr = "{\"Employee\":" + $employee + ",\"Families\":" + $family + ",\"RelativesInCompany\":" + $relatives + ",\"Linkman\":" + $linkman + ",\"WorkExperience\":" + $workExperience + "}";
+            // alert($jsonStr);
+            //$($jsonStr).serialize();
+            $.ajax({
+                url: "RegisterHandler.ashx",
+                data: { "dataObj": $jsonStr },
+                type: "post",
+                dataType: "json",
+                success: function (data) {          
+                    var $obj = data;
+                    if ($obj.result == "true") {
+                        window.location.href = "/Success.html";
+                    } else {
+                        alert("保存失败");
+                        window.location.reload();
+                    }
+
+                },
+                error: function () {
+                    alert("保存失败");
+                    window.location.reload();
+                },
+                asyn: true
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">工作经历(填写入职本公司前相关工作经历信息)<span style="font-size:18px;color:red;">没有则不填</span></div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">公司名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="company" name="company" maxlength="15" placeholder="请输入公司名称" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">职务名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="occupation" name="occupation" maxlength="15" placeholder="请输入职务名称" />
+                </div>
+            </div>
+            <div class="weui-cell ">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">离职原因</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="reasonForLeaving" name="reasonForLeaving" maxlength="30" placeholder="请输入离职原因" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">待&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遇</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" id="salary" name="salary" maxlength="10" placeholder="请输入薪资待遇" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">入职日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="employmentDate" name="employmentDate" placeholder="请输入入职日期" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">离职日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" id="resignationDate" name="resignationDate" value="请输入离职日期" />
+                </div>
+            </div>
+        </div>
+        <!--<div class="weui-cells__title">工作经历列表</div>
+        <div class="weui-cells" id="wList">-->
+        </div>
+        <div class="weui-btn-area v-center">            
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveW();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteW();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="save();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

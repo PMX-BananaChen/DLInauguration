@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+    <title>IDL入职信息化系统</title>
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/relationship.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if (!document.referrer) {
+                //window.location.href = "/WorkExperienceIDL.html";
+                window.location.href = "/RegisterIDL.html";
+            }
+            initLvli();
+        });
+
+
+        //[{"school":"学校名称","education":"本科"},{"school":"学校名称","education":"专科"}]
+        function sethtml($id, $job, $company) {
+
+            var $html = " <a class='weui-cell weui-cell_access' id='" + $id
+                        + "' onclick='bindF(this);'><div class='weui-cell__bd'><p>" + $job
+                        + "</p></div><div class='weui-cell__ft'>" + $company
+                        + "</div></a>";
+            return $html;
+        }
+
+        //初始化履历列表
+        function initLvli() {
+            var $jsonObj = localStorage.getItem("workExperience_IDL");
+            //alert(999);
+            //alert(localStorage.getItem("workExperience_IDL"));
+
+            var $experienceObj = JSON.parse($jsonObj);
+            var strHtml = "";
+
+            for (var i = 0; $experienceObj != null && i < $experienceObj.length; i++) {
+                //alert($experienceObj[i]["company"]);
+                var $id = $experienceObj[i]["id"];
+                var $job = $experienceObj[i]["job"];//职务名称
+                var $company = $experienceObj[i]["company"];//公司名称
+                //var $educationship = $("#educationSel option[value='" + $company + "']").text();
+                strHtml += sethtml($id, $job, $company);
+            }
+            $("#fList").html("");
+            $("#fList").append(strHtml);
+        }
+
+        function bindF(obj) {
+            var $aId = $(obj).attr("id");
+
+            var $jsonObj = localStorage.getItem("workExperience_IDL");
+            var $experienceObj = JSON.parse($jsonObj);
+            for (var i = 0; $experienceObj != null && i < $experienceObj.length; i++) {
+                var $id = $experienceObj[i]["id"];
+
+
+                if ($aId == $id) {
+                    var $job = $experienceObj[i]["job"];
+                    var $company = $experienceObj[i]["company"];
+                    var $manager = $experienceObj[i]["manager"];
+                    var $salary = $experienceObj[i]["salary"];
+                    var $reason = $experienceObj[i]["reason"];
+                    // var $workExperience = $experienceObj[i]["workExperience"];
+                    var $employmentDate = $experienceObj[i]["employmentDate"];
+                    var $resignationDate = $experienceObj[i]["resignationDate"];
+                    $("#id").val($id);
+                    $("#job").val($job);
+                    $("#company").val($company);
+                    $("#manager").val($manager);
+                    $("#salary").val($salary);
+                    $("#reason").val($reason);
+                    // $("#workExperience").val(workExperience);
+                    $("#employmentDate").val($employmentDate);
+                    $("#resignationDate").val($resignationDate);
+                    break;
+                }
+            }
+        }
+
+        function saveF() {
+            var $jsonObj = localStorage.getItem("workExperience_IDL");
+            //var $experienceObj = JSON.parse($jsonObj);
+            var $idflag = $("#id").val().trim();
+            //if ($idflag == "" && $experienceObj != null && $experienceObj.length == 3) {
+            //    alert("最多填写三个履历!");
+            //    setEmpty();
+            //    return;
+            //}
+            if (!checkForm()) {
+                return;
+            }
+            //新增或修改
+            if ($idflag == "") {
+                var $date = new Date();
+                var $id = $date.getHours() + "" + $date.getMinutes() + $date.getSeconds() + "" + $date.getMilliseconds();
+                var $formData = $("#form").serializeObject();
+                $formData.id = $id;
+                // alert("[" + JSON.stringify($formData) + "]");
+                var $jsonObj = localStorage.getItem("workExperience_IDL");
+                if ($jsonObj == null) {
+                    // alert($formData);
+                    localStorage.setItem("workExperience_IDL", "[" + JSON.stringify($formData) + "]");
+                } else {
+                    //$jsonObj.push($formData);
+                    var $experienceObj = JSON.parse($jsonObj);
+                    $experienceObj.push($formData);
+                    var $strJson = JSON.stringify($experienceObj);
+                    // alert("123");
+                    // alert($strJson);
+                    localStorage.setItem("workExperience_IDL", $strJson);
+                    var $localJson = localStorage.getItem("workExperience_IDL");
+                }
+            } else {
+                var $jsonObj = localStorage.getItem("workExperience_IDL");
+                var $experienceObj = JSON.parse($jsonObj);
+                for (var i = 0; $experienceObj != null && i < $experienceObj.length; i++) {
+                    var $id = $experienceObj[i]["id"];
+                    if ($idflag == $id) {
+                        var $formData = $("#form").serializeObject();
+                        $experienceObj.splice(i, 1, $formData);
+
+                        break;
+                    }
+                }
+                localStorage.setItem("workExperience_IDL", JSON.stringify($experienceObj));
+            }
+            //alert("保存成功");
+            initLvli();
+            setEmpty();
+            window.location.href = "/ExpectWorkIDL.html";
+        }
+
+        function setEmpty() {
+            //输入内容设置为空
+            $("#id").val("");
+            $("#job").val("");
+            $("#company").val("");
+            $("#manager").val("");
+            $("#salary").val("");
+            $("#reason").val("");
+            // $("#workExperience").val("");
+            $("#employmentDate").val("");//任职期间始
+            $("#resignationDate").val(""); //任职期间末
+
+        }
+
+        //检验表单输入
+        function checkForm() {
+            //检验职务名称是否输入为空
+            var $job = $("#job").val().trim();
+            if ($job == "") {
+                alert("请输入职务名称!")
+                $("#job").focus();
+                return false;
+            }
+
+            //检验公司名称以及地址是否输入为空
+            var $company = $("#company").val().trim();
+            if ($company == "") {
+                alert("请输入公司名称以及地址!")
+                $("#company").focus();
+                return false;
+            }
+
+            //检验主管姓名以及职称是否输入为空
+            var $manager = $("#manager").val().trim();
+            if ($manager == "") {
+                alert("请输入主管名称以及职称!")
+                $("#manager").focus();
+                return false;
+            }
+
+            //检验待遇是否有效
+            var $salary = $("#salary").val().trim();
+            if ($salary == "") {
+                alert("请输入薪资待遇!")
+                $("#salary").focus();
+                return false;
+            } else if ($salary.length > 7) {
+                alert("请输入实际薪资待遇!")
+                $("#salary").focus();
+                return false;
+            }
+
+            //检验离职原因是否输入为空
+            var $reason = $("#reason").val().trim();
+            if ($reason == "") {
+                alert("请输入离职原因!")
+                $("#reason").focus();
+                return false;
+            }
+
+            //检验入职日期是否有效
+            var $employmentDate = $("#employmentDate").val().trim();
+            if ($employmentDate == "") {
+                alert("请输入入职日期!")
+                $("#employmentDate").focus();
+                return false;
+            } else if (new Date($employmentDate) >= new Date()) {
+                alert("入职日期必须早于今天");
+                $("#employmentDate").focus();
+                return false;
+            }
+            //检验离职日期是否有效
+            var $resignationDate = $("#resignationDate").val().trim();
+            if ($resignationDate == "") {
+                alert("请输入离职日期!")
+                $("#resignationDate").focus();
+                return false;
+            } else if (new Date($resignationDate) >= new Date()) {
+                alert("离职日期必须早于今天");
+                $("#resignationDate").focus();
+                return false;
+            }
+            if (new Date($employmentDate) >= new Date($resignationDate)) {
+                alert("入职日期必须早于离职日期");
+                $("#employmentDate").focus();
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        function deleteF() {
+            var $idflag = $("#id").val().trim();
+            if ($idflag == "") {
+                alert("请选择一个履历信息!");
+                return;
+            }
+            if (confirm("确定删除这条数据吗?")) {
+                var $jsonObj = localStorage.getItem("workExperience_IDL");
+                var $experienceObj = JSON.parse($jsonObj);
+                for (var i = 0; $experienceObj != null && i < $experienceObj.length; i++) {
+                    var $id = $experienceObj[i]["id"];
+                    if ($idflag == $id) {
+                        $experienceObj.splice(i, 1);
+                        alert("删除成功!");
+                        break;
+                    }
+                }
+                localStorage.setItem("workExperience_IDL", JSON.stringify($experienceObj));
+                initLvli();
+                setEmpty();
+            }
+        }
+        function next() {
+            var $jsonObj = localStorage.getItem("workExperience_IDL");
+            var $experienceObj = JSON.parse($jsonObj);
+            if ($experienceObj == null || $experienceObj.length == 0) {
+                alert("至少填写一项履历信息!");
+                $("#job").focus();
+                return;
+            }
+            window.location.href = "/ExpectWorkIDL.html";  //工作经历
+            //window.location.href = "/RegisterIDL.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="weui-cells__title">履历</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input id="id" name="id" type="text" value="" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">职务名称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="job" name="job" maxlength="30" placeholder="请输入职务名称" />
+                </div>
+            </div>
+            <!--<div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">工作经验</label></div>
+                <div class="weui-cell__bd">
+                    <textarea cols="15" rows="10" id="workExperience" name="workExperience" placeholder="讲述工作经验(说明工作中最熟悉的部分)"></textarea>
+                </div>
+            </div>-->
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">任职期间</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="" id="employmentDate" name="employmentDate" />  -  <input class="weui-input" type="date" value="" id="resignationDate" name="resignationDate" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">公司名称以及地址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="company" name="company" maxlength="100" placeholder="请输入公司名称及地址" />
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">主管姓名以及职称</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="manager" name="manager" maxlength="50" placeholder="请输入主管姓名及职称" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">待遇</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="salary" name="salary" maxlength="10" placeholder="请输入薪水待遇" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">离职原因</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="reason" name="reason" maxlength="30" placeholder="请输入离职原因" />
+                </div>
+            </div>
+
+
+        </div>
+        <!--<div class="weui-cells__title">履历列表</div>
+        <div class="weui-cells" id="fList">-->
+        </div>
+        <div class="weui-btn-area v-center">
+            <!--<a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">保存</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="deleteF();">删除</a>-->
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="setEmpty();">置空</a>
+            <a class="weui-btn weui-btn_mini weui-btn_primary" href="javascript:" onclick="saveF();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,720 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+
+    <title>IDL入职信息化系统</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet/less" type="text/css" href="style/weui/weui.less" />
+    <script src="scripts/less/less.js"></script>
+    <script src="scripts/jquery/jquery-1.8.0.js"></script>
+    <script src="scripts/serializeObject.js"></script>
+    <script src="scripts/checkIdentity.js"></script>
+    <script src="scripts/province.js"></script>
+    <link href="style/weui/weuix.css" rel="stylesheet" />
+    <style>
+        /*弹框验证码*/
+        .ipt-fake-box {
+            text-align: center;
+        }
+
+        .input {
+            display: inline-block;
+        }
+
+            .input:last-child {
+                border-right: 1px solid #999;
+            }
+
+        input.my_input {
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+            border-left: 1px solid #999;
+            width: 45px;
+            height: 45px;
+            outline: none;
+            font-family: inherit;
+            font-size: 28px;
+            font-weight: inherit;
+            text-align: center;
+            line-height: 45px;
+            color: #c2c2c2;
+            background: rgba(255, 255, 255, 0);
+        }
+
+        #j_phone_checkcode {
+            color: #6c6c6c;
+            vertical-align: middle;
+            width: 50%;
+        }
+
+        #j_getcode {
+            left: 120px;
+            background: #FFF1E8;
+            border: 1px solid #FF751A;
+            height: 100%;
+            white-space: nowrap;
+            padding: 0 5px;
+            width: 30%;
+            border-radius: 3px;
+            top: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+      
+        $(function () {
+            $("#identityNo").blur(function () {
+                var $no = $(this).val().trim();
+                if ($no == "") return;
+                if (validation_filter_id_card($no)) {
+                    var $jsonObj = localStorage.getItem("employeeInfo_IDL");
+                    // alert($jsonObj);
+                    if ($jsonObj != null) {
+                        var $empObj = JSON.parse($jsonObj);
+                        var $employeeObj = $empObj[0];
+                        if ($no == $employeeObj["identityNo"]) {
+                            $("#name").val($employeeObj["name"]);
+                            $("#engName").val($employeeObj["engName"]);
+                            if ($("#m1").val() == $employeeObj["marriage"]) {
+                                $("#m1").attr("checked", "checked");
+                                $("#m2").removeAttr("checked");
+                            } else {
+                                $("#m2").attr("checked", "checked");
+                                $("#m1").removeAttr("checked");
+                            }
+                            $("#email").val($employeeObj["email"]);
+                            $("#stature").val($employeeObj["stature"]);
+                            $("#weight").val($employeeObj["weight"]);
+                            $("#nationality").val($employeeObj["nationality"]);
+                            $("#phoneNumber").val($employeeObj["phoneNumber"]);
+                            $("#address").val($employeeObj["address"]);
+
+                            var $Language = $employeeObj["Language"];
+                            $("#LanguageSel option:[value='" + $Language + "']").attr("selected", "true");
+                            var $Languagelevel = $employeeObj["Languagelevel"];
+                            $("#LanguagelevelSel option:[value='" + $Languagelevel + "']").attr("selected", "true");
+                            $("#area").val($employeeObj["area"]);
+                            $("#titleid").val($employeeObj["titleid"]);
+
+                            var $applyChannel = $employeeObj["applyChannel"];
+                            $("#applychannelSel option:[value='" + $applyChannel + "']").attr("selected", "true");
+                            var $pliticsStatus = $employeeObj["PliticsStatus"];
+                            $("#pliticsStatusSel  option:[value='" + $pliticsStatus + "']").attr("selected", "true");
+                        } else {
+                            setEmpty();
+                        }
+                    }
+                    var $genderNo = $no.substr(16, 1);
+                    bindGender($genderNo);
+                    var $birthdayNo = $no.substr(6, 8);
+                    bindBirthday($birthdayNo);
+                    var $subNo = $no.substr(0, 2);
+                    bindProvince($subNo);
+                }
+                else {
+                    alert("身份证号码输入有误，请重新输入！");
+                    $(this).val("").focus();
+                }
+            });
+
+            //初始化所属区域
+            initArea();
+
+            //初始化
+            initPerson();
+
+            //初始化语言
+            initLanguage();
+            initLanguagelevel();
+
+            //初始化应聘渠道
+            getCanal();
+
+            //初始化政治面貌
+            initPliticsStatus();
+
+            $("#LanguageSel").change(function () {
+                var txtArr = ['英文', '日文', '其他'];
+                var valArr = ['01', '02', '03',];
+
+            });
+
+            $("#LanguagelevelSel").change(function () {
+                var txtArr = ['很好', '中等', '一般'];
+                var valArr = ['01', '02', '03', ];
+
+            });
+
+            //$("#applychannelSel").change(function () {
+            //    var txtArr = ['前程无忧', '智联招聘', '58同城', '赶集网', '招聘会', '校园招聘', '报纸', '内部推荐', '商场推荐', '官网海报', '猎头', '其他', '劳务公司'];
+            //    var valArr = ['01', '02', '03','04','05','06','07','08','09','10','11','12','13' ];
+
+            //});
+
+            $("#pliticsStatusSel").change(function () {
+                var txtArr = ['党员', '团员', '群众'];
+                var valArr = ['1', '2', '9'];
+            });
+        });
+
+        function getCanal(type) {
+            $.ajax({
+                url: "InitChannel.ashx",
+                type: "post",
+                data: { "type": type },
+                dataType: "json",
+                success: function (data) {
+                    var datas = data.Table, channelList = []
+                    datas.filter(function (item) {
+                        if(item.type == "B") channelList.push(item.value)
+                    });
+                    initChannel(channelList);
+                },
+                error: function () {
+                },
+                asyn: true
+            });
+        }
+
+        function initArea() {
+            var $area = request("area");
+            $("#area").val($area);
+
+            var $titleid = request("titleid");
+            $("#titleid").val($titleid);
+
+        }
+
+        function request(paras) {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+            var paraObj = {};
+            for (i = 0; j = paraString[i]; i++) {
+                paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if (typeof (returnValue) == "undefined") {
+                return "";
+            } else {
+                return returnValue;
+            }
+        }
+
+
+        function initPerson() {
+            var $idNo = request("id");
+            if ($idNo != "") {
+                $.ajax({
+                    url: "InitHandler.ashx",
+                    type: "post",
+                    data: { "ID": $idNo },
+                    dataType: "json",
+                    success: function (data) {
+                        var $obj = data;
+                        localStorage.setItem("employeeInfo_IDL", JSON.stringify($obj["employeeInfo_IDL"]));
+
+                        for (var i = 0; $obj["education_IDL"] != null && i < $obj["education_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["education_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("education_IDL", JSON.stringify($obj["education_IDL"]));
+
+                        for (var i = 0; $obj["WorkExperience_IDL"] != null && i < $obj["WorkExperience_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["WorkExperience_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("WorkExperience_IDL", JSON.stringify($obj["WorkExperience_IDL"]));
+
+                        for (var i = 0; $obj["ExpectWork_IDL"] != null && i < $obj["ExpectWork_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["ExpectWork_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("ExpectWork_IDL", JSON.stringify($obj["ExpectWork_IDL"]));
+
+                        for (var i = 0; $obj["License_IDL"] != null && i < $obj["License_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["License_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("License_IDL", JSON.stringify($obj["License_IDL"]));
+
+                        for (var i = 0; $obj["Families_IDL"] != null && i < $obj["Families_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["Families_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("Families_IDL", JSON.stringify($obj["Families_IDL"]));
+
+                        for (var i = 0; $obj["Linkman_IDL"] != null && i < $obj["Linkman_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["Linkman_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("Linkman_IDL", JSON.stringify($obj["Linkman_IDL"]));
+
+                        for (var i = 0; $obj["friend_IDL"] != null && i < $obj["friend_IDL"].length; i++) {
+                            var $id = Math.random() * 100;
+                            $obj["friend_IDL"][i].id = $id;
+                        }
+                        localStorage.setItem("friend_IDL", JSON.stringify($obj["friend_IDL"]));
+
+
+                        var $no = $obj["employeeInfo_IDL"][0]["identityNo"];
+                        $("#identityNo").val($no).attr("readonly", "true");
+                        //.attr("disabled", "true");
+                        $("#identityNo").trigger("blur");
+                    },
+                    error: function () {
+                    },
+                    asyn: true
+                });
+            }
+        }
+
+        function setEmpty() {
+            $("#name").val("");
+            $("#engname").val("");
+            $("#Email").val("");
+            $("input:radio[name='gender']:first").attr("checked", "true");
+            $("#birthday").val(""); 
+            $("#stature").val("");//身高
+            $("#weight").val("");//体重
+            $("input:radio[name='marriage']:first").attr("checked", "true");
+            $("#nationality").val("");
+            $("#province").val("");
+            $("#phoneNumber").val("");
+            $("#applychannelSel option:[value='00']").attr("selected", "true");
+            $("#pliticsStatusSel   option:[value='0']").attr("selected", "true");
+            $("#address").val(""); //$("#address").val("东莞石碣镇");
+            $("#LanguageSel option:[value='00']").attr("selected", "true");
+            $("#LanguagelevelSel option:[value='00']").attr("selected", "true");
+        }
+
+        //输入身份证号码后自动带出省份
+        function bindProvince($subNo) {
+            var $name = getProvince($subNo);
+            if ($name != '')
+            {
+                $("#nationality").val("中国");
+                $("#province").val($name);
+            }
+            
+        }
+        //输入身份证号码后自动设置性别
+        function bindGender($genderNo) {
+            if (Number($genderNo) % 2 == 0) {
+                $("#s2").attr("checked", "checked");
+                $("#s1").removeAttr("checked");
+            } else {
+                $("#s1").attr("checked", "checked");
+                $("#s2").removeAttr("checked");
+            }
+        }
+        //输入身份证号码后自动设置出生日期
+        function bindBirthday($birthdayNo) {
+            var $bDate = $birthdayNo.substr(0, 4) + "-" + $birthdayNo.substr(4, 2) + "-" + $birthdayNo.substr(6, 2);
+            $("#birthday").val($bDate);
+        }
+
+        function save() {
+            //检验身份证号码是否为空
+            var $idNo = $("#identityNo").val().trim();
+            if ($idNo == "") {
+                alert("请填写身份证号码!");
+                $("#identityNo").focus();
+                return false;
+            }
+            //检验中文姓名是否为空
+            var $name = $("#name").val().trim();
+            var reg = /^[\u2E80-\u9FFF]+$/;
+            if ($name == "") {
+                alert("请填写中文姓名!");
+                $("#name").focus();
+                return false;
+            } else if (!reg.test($name)) {
+                alert("姓名输入有误，请重新输入");
+                $("#name").focus();
+                return false;
+            }
+            //检验英文姓名是否为空  非必填
+            //var $engname = $("#engname").val().trim();
+            //var reg = /^[A-Za-z\s]+$/;
+            //if ($engname == "") {
+            //    alert("请填写英文姓名!");
+            //    $("#engname").focus();
+            //    return false;
+            //} else if (!reg.test($engname)) {
+            //    alert("格式有誤，请檢查格式重新输入");
+            //    $("#engname").focus();
+            //    return false;
+            //}
+
+         
+            //检验出生日期是否为空
+            var $birthday = $("#birthday").val().trim();
+            if ($birthday == "") {
+                alert("请填写出生日期!");
+                $("#birthday").focus();
+                return false;
+            }
+            //检验手机号码是否输入正确
+            var $phoneNum = $("#phoneNumber").val().trim();
+            if ($phoneNum == "") {
+                alert("请填写手机号码!");
+                $("#phoneNumber").focus();
+                return false;
+            }
+            else {
+                var reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+                if (!reg.test($phoneNum)) {
+                    alert("手机号码输入有误，请重新填写！");
+                    $("#phoneNumber").focus();
+                    return false;
+                }
+            }
+            //检验籍贯是否为空
+            var $province = $("#province").val().trim();
+            if ($province == "") {
+                alert("请填写籍贯");
+                $("#province").focus();
+                return false;
+            }
+            //检验现在地址是否为空
+            var $address = $("#address").val().trim();
+            if ($address == "") {
+                alert("请填写现在地址!");
+                $("#address").focus();
+                return false;
+            }
+            //检验政治面貌、应聘渠道是否为空
+            var $pliNo = $("#pliticsStatusSel option:selected").val();
+            if ($pliNo == "0") {
+                alert('请如实选择政治面貌');
+                $("#pliticsStatusSel").focus();
+                return false;
+            }
+            var $eduNo = $("#applychannelSel option:selected").val();
+            if ($eduNo == "00") {
+                alert('请选择应聘渠道');
+                $("#applychannelSel").focus();
+                return false;
+            }
+
+            //检验语言程度  非必填
+            //var $LanguagelevNo = $("#LanguagelevelSel option:selected").val();
+            //if ($LanguagelevNo == "00") {
+            //    alert('请选择语言熟悉程度');
+            //    $("#LanguagelevelSel").focus();
+            //    return false;
+            //}
+            //var $LanguageNo = $("#LanguageSel option:selected").val();
+            //if ($LanguageNo == "00") {
+            //    alert('请选择语言程度');
+            //    $("#LanguageSel").focus();
+            //    return false;
+            //}
+
+            if ($("#codeVerification").val() == 0) {
+                alert("手机号码验证未通过,请重新验证!");
+                return false;
+            }
+
+
+
+            var $jsonObj = localStorage.getItem("employeeInfo_IDL");
+            var $employeeObj = null;
+            if ($jsonObj != null) {
+                var $empObj = JSON.parse($jsonObj);
+                $employeeObj = $empObj[0];
+            }
+            if ($employeeObj == null || $idNo != $employeeObj["identityNo"]) {
+                localStorage.removeItem("FamilyIDL");
+                localStorage.removeItem("license_IDL");
+                localStorage.removeItem("LinkmanIDL");
+                localStorage.removeItem("WorkExperienceIDL");
+                localStorage.removeItem("education_IDL");
+            }
+            var $formData = $("#form").serializeObject();
+            //alert($formData);
+            var $jsonData = JSON.stringify($formData);
+            localStorage.setItem("employeeInfo_IDL", "[" + $jsonData + "]");
+            window.location.href = "/EducationIDL.html";
+        }
+
+    
+        function initLanguage() {
+            var arr = ['英文', '日文', '其他'];
+            $("#LanguageSel").append("<option value=''>请选择语言</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='0" + (index + 1) + "'>" + element + "</option>";
+                $("#LanguageSel").append(str);
+            });
+        }
+
+        function initLanguagelevel() {
+            var arr = ['很好', '中等', '一般'];
+            $("#LanguagelevelSel").append("<option value=''>请选择语言熟悉程度</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='0" + (index + 1) + "'>" + element + "</option>";
+                $("#LanguagelevelSel").append(str);
+            });
+        }
+
+        function initChannel(arr) {
+            //var arr = ['前程无忧', '智联招聘', '58同城', '赶集网', '招聘会', '校园招聘', '报纸', '内部推荐', '商场推荐', '官网海报', '猎头', '其他', '劳务公司', '现场直招点', '网络', '内部转调'];
+            $("#applychannelSel").append("<option value='00'>请选择应聘渠道</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='" + (Array(2).join(0) + (index + 1)).slice(-2) + "'>" + element + "</option>";
+                $("#applychannelSel").append(str);
+            });
+        }
+
+        function initPliticsStatus() {
+            var arr = ['党员', '团员'];//1,2
+            $("#pliticsStatusSel").append("<option value='0'>请选择政治面貌</option>");
+            $.each(arr, function (index, element) {
+                var str = "<option value='" + (index + 1) + "'>" + element + "</option>";
+                $("#pliticsStatusSel").append(str); 
+            });
+            $("#pliticsStatusSel").append("<option value='9'>群众</option>");//9 是群众
+        }
+
+
+        var countdown = 60;
+        function settime(obj) {
+            var phone = $("#phoneNumber").val();
+            if (!phone) {
+                alert("请输入手机号!");
+                return;
+            } else if (phone.length !== 11) {
+                alert("手机格式错误,请检查!");
+                return;
+            }
+            var reg = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+            if (!reg.test(phone)) {
+                alert("手机号码输入有误，请重新填写！");
+                return;
+            }
+            if (countdown == 0) {
+                obj.removeAttribute("disabled");
+                obj.value = "获取验证码";
+                countdown = 60;
+                return;
+            } else if (countdown == 59) {
+                sendMsg(phone);
+                obj.setAttribute("disabled", true);
+                obj.value = "重新发送(" + countdown + "s)";
+                countdown--;
+            } else {
+                obj.setAttribute("disabled", true);
+                obj.value = "重新发送(" + countdown + "s)";
+                countdown--;
+            }
+            setTimeout(function () {
+                settime(obj)
+            }, 1000);
+        }
+
+
+        function sendMsg(phone) {
+            $.ajax({
+                url: "http://wx2.primax.com.cn/middleGround-api/system/verification/getPhoneCode?phone=" + phone + "&template=SMS_230985027",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "json",
+                type: 'get',
+                crossDomain: true,
+                success: function (data) {
+                    var datas = data.data;
+                    if (data.code == 200) {
+                        if (datas.phone == phone) {
+                            $("#code").val(datas.code);
+                        }
+                        setTimeout(function () {
+                            $("#code").val("phone");
+                        }, parseInt(datas.timeOut * 1000));
+                    }
+                },
+                error: function () {
+                    console.log("error");
+                }
+            });
+        };
+
+        function codeInput() {
+            var t_code = $("#j_phone_checkcode").val();
+            var code = $("#code").val();
+            if (t_code.length == 6) {
+                if (t_code == code) {
+                    alert("验证通过！");
+                    $("#codeVerification").val(1)
+                } else if (code == "phone") {
+                    $("#j_phone_checkcode").val("");
+                    $("#j_phone_checkcode").focus();
+                    alert("验证码失效,请重新发送！");
+                } else {
+                    $("#j_phone_checkcode").val("");
+                    $("#j_phone_checkcode").focus();
+                    alert("验证码错误,请重新输入!");
+                }
+            }
+        }
+    </script>
+</head>
+<body ontouchstart>
+    <div class="weui-cells__title">工作申请书(间接员工用)</div>
+    <form id="form">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell" style="display:none">
+                <div class="weui-cell__hd">
+                    <input name="id" type="text" value="a" />
+                    <input name="area" id="area" type="text" value="" />  <!--LW  MZ-->
+                    <!--<input name="emptype" id="emptype" type="text" value="" />-->    <!--IDL、NW0-->
+                    <input name="titleid" id="titleid" type="text" value="" />   <!--IDL  NW0-->
+                    <input name="code" type="text" id="code" />
+                    <input name="codeVerification" type="text" id="codeVerification" value="0" />
+                    <!--<input name="bu" id="bu" type="text" value="" />-->   <!--VT/SMT/SSG/Q/IDD-->
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
+                <div class="weui-cell__bd">
+                    <input id="identityNo" name="identityNo" class="weui-input" type="text" maxlength="18" placeholder="请输入身份证号码" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">中文姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="name" name="name" maxlength="20" placeholder="请输入中文姓名" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">英文姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="engname" name="engname" maxlength="20" placeholder="请输入英文姓名,如:Kelly Wang" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">电子邮箱</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="email" name="Email" maxlength="50" placeholder="请输入电子邮箱" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-form-checkbox" name="gender" id="s1" type="radio" checked="checked" value="1" readonly>
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>男</p></div></i>
+                    <input class="weui-form-checkbox" name="gender" id="s2" type="radio" style="margin-left:30px;" value="0" readonly>
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>女</p></div></i>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">出生日期</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" id="birthday" name="birthday" value="" readonly />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" id="stature" name="stature" value="" placeholder="CM" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" id="weight" name="weight" value="" placeholder="KG" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">婚姻状况</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-form-checkbox" name="marriage" id="m1" type="radio" checked="checked" value="0">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>未婚</p></div></i>
+                    <input class="weui-form-checkbox" name="marriage" id="m2" type="radio" style="margin-left:30px;" value="1">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>已婚</p></div></i>
+                    <input class="weui-form-checkbox" name="marriage" id="m2" type="radio" style="margin-left:30px;" value="2">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>离婚</p></div></i>
+                    <input class="weui-form-checkbox" name="marriage" id="m2" type="radio" style="margin-left:30px;" value="3">
+                    <i class="weui-icon-radio"><div class="weui-form-text"><p>分居</p></div></i>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">国籍</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="nationality" name="nationality" value="" placeholder="请输入国籍" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯</label></div>
+                <div class="weui-cell__bd">
+                    <input id="province" class="weui-input" type="text" name="province" maxlength="20" placeholder="请输入省份" readonly />
+                </div>
+            </div>
+
+            <div class="weui-cell ">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号码</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="请输入手机号码" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <label class="weui-label">验证码</label>
+                <div class="weui-cell__bd">
+                    <input id="j_phone_checkcode" class="weui-input" type="text" maxlength="6" placeholder="请输入验证码" autocomplete="off"
+                           data-widget-cid="widget-1" data-explain="" oninput="codeInput()">
+                    <input id="j_getcode" type="button" id="btn" value="获取验证码" onclick="settime(this)" />
+                    <!--<button id="j_getcode" class="getcheckcode ui-button-over ft-orange" type="button" data-widget-cid="widget-2" onclick="settime(this)">获取短信校验码</button>-->
+                    <input type="hidden" name="_fm.v._0.pho" value="sms" id="codetype">
+                </div>
+                <div class="ui-form-explain"></div>
+            </div>
+           
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">现在住址</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="address" name="address" maxlength="50" placeholder="请输入现在住址" value="" />
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">应聘渠道</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="applychannelSel" class="weui-select" name="applyChannel"></select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">语言</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="LanguageSel" class="weui-select" name="Language"></select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">熟悉程度</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="LanguagelevelSel" class="weui-select" name="Languagelevel"></select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd">
+                    <label for="" class="weui-label">政治面貌</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <select id="pliticsStatusSel" class="weui-select" name="pliticsStatus"></select>
+                </div>
+            </div>
+
+        </div>
+     
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="btn" onclick="save();">下一步</a>
+        </div>
+    </form>
+</body>
+</html>
